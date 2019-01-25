@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+
+<head>  
+    <link href="fonts/material-icons/iconfont/material-icons.css" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+	
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="js/Login.js"></script>
+	 <script type="text/javascript" src="js/Logout.js"></script>
+	 
+	  <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.js"></script>
+<style>
+.h6, h6 {
+    font-size: 16px;
+}
+
+span.screen-title {
+    font-size: 2rem;
+    margin-left: 5rem!important;
+}
+</style>
+</head>
+
+<body onload="showList();" >
+ <ul id="slide-out" class="side-nav">
+        <li>
+            <div class="user-view">
+                <div class="background">
+
+                </div>
+                <a href="#!user">
+                    <img class="circle" src="images/yuna.jpg">
+                </a>
+                <a href="#!name">
+                    <span id="loginname" class="white-text name">Username</span>
+                </a>
+                
+            </div>
+        </li>
+        <li >
+            <a class="waves-effect" href="Menu.html">
+                <i class="material-icons">dashboard</i>Dashboard</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>   
+	
+		<li>
+            <a class="waves-effect" href="DemographicDetails.html">
+                <i class="material-icons">group</i>Demographic Details</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>        
+		
+	 
+		<li>
+            <a class="waves-effect"  href="DoctorList.html">
+                <i class="material-icons">person</i>Consulting Doctors</a>
+        </li>
+		 <li>
+            <div class="divider"></div>
+        </li> 
+         <li>
+            <a class="waves-effect" href="AddDocVisit.html">
+                <i class="material-icons">add_box</i>Add Doctor Visit</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+		<li>
+            <a class="waves-effect" href="VisitList.html">
+                <i class="material-icons">file_upload</i>Upload Reports</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>
+		
+		<li>
+            <a class="waves-effect" href="Reports.html">
+                <i class="material-icons">assignment_turned_in</i>View Reports</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>
+		<li class="activated">
+            <a class="waves-effect" href="InsuranceList.html">
+                <i class="material-icons">description</i>Health Insurance</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+		
+		<li>
+            <a class="waves-effect" href="AddEmergencyNoList.html">
+                <i class="material-icons">call</i>Emergency Call</a>
+        </li>	
+		<li>
+            <div class="divider"></div>
+        </li>
+		
+		<li>
+            <a class="waves-effect" href="Setting.html">
+                <i class="material-icons">settings</i>Setting</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+        <li>
+            <a class="waves-effect" onClick="logout();">
+                <i class="material-icons">power_settings_new</i>Logout</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+    </ul>
+
+   
+	<nav class="nav-extended">
+        <div class="nav-wrapper">
+            <a href="#!" class="left brand-logo waves-effect" data-activates="slide-out">
+                <i class="material-icons menu">menu</i>
+            </a>
+            <span class="screen-title">Health Insurance</span>
+			<a href="Notification.html" class="noti"><i class="material-icons">notifications</i></a>
+        </div>
+    </nav>
+	
+
+    <div class="row" style="margin-top: 15px;">
+	
+	 <div class="input-field col s12 m12" style="margin-bottom: 1rem;">
+	  <input type="button" id="btnAddInsurance" value="Add Insurance Details" class="col s12 m12 btn btn-block" />
+	</div>
+			
+      <div class="col s12 m12">
+            <div class=" with-header" id="table1" style="margin-bottom:60px;">
+	 </div>
+	 </div>
+	
+
+    </div>
+   
+   
+    
+    <script>
+	
+	
+	var flag;
+
+        // Initialize collapse button
+
+        $('.brand-logo').sideNav({
+            menuWidth: 300, // Default is 300
+            edge: 'left', // Choose the horizontal origin
+            closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            draggable: true, // Choose whether you can drag to open on touch screens,
+            onOpen: function (el) { /* Do Stuff */ }, // A function to be called when sideNav is opened
+            onClose: function (el) { /* Do Stuff */ }, // A function to be called when sideNav is closed
+        }
+        );
+
+	   $("#btnAddInsurance").click(function () {	
+	   
+	          localStorage.setItem('flag',1);
+		       window.location.href="AddInsuranceDetails.html";
+			  //GetDataForCancellation();
+        });
+		
+		
+	  
+	  var loginname = localStorage.getItem('user_name');
+	  var User_id = localStorage.getItem('u_id');
+	
+      $('#loginname').text(loginname);
+		 
+		function showList(){
+		
+				
+				$.ajax({
+
+				type: "POST",
+				url: "https://www.manoramahealthcare.com/health_record_organizer/insurance_list.php",
+				data : 'user_id=' + User_id, 
+				success: function (msg)
+				{
+				
+				 var responce = JSON.parse(msg);
+				 
+				 var Resourcetable = responce.message;
+				
+				 
+				 if(responce.result==false){
+				
+				  $("#table1").append("<span class='norecord'>No Records<span>");
+				  
+				 // $("#eno").css('display','none');
+				  
+				  return false;
+				}
+				
+				
+				 for(var i =0;i < Resourcetable.length;i++)
+				 {
+				   console.log(Resourcetable[i].insurance_id);
+				   bindList(Resourcetable[i].insurance_company,Resourcetable[i].insurance_department,Resourcetable[i].insurance_id,Resourcetable[i].insurance_no,Resourcetable[i].insurance_premium,Resourcetable[i].insurance_scheme,Resourcetable[i].insurance_scheme_expiry_date,Resourcetable[i].insurance_scheme_start_date);
+				 }
+				 
+				 
+				 },
+				error		: function(response)
+							  {   
+									console.log(response);                         
+							  }
+				
+				});
+		}
+				
+		
+function bindList(insurance_company,insurance_department,insurance_id,insurance_no,insurance_premium,insurance_scheme,insurance_scheme_expiry_date,insurance_scheme_start_date)
+{
+	
+	 flag=1;
+		
+	     var _strim = "";
+
+        _strim += '<div class="row card" onclick="GetDataForCancellation(\'' + insurance_id + '\')">';
+       
+        _strim += '<div class="col s9" style="margin-top: 5px;margin-bottom: 5px;">';
+        _strim += '<div class="apptText"> ';
+        _strim += '<span class=""><b>Comapny : </b>' + insurance_company + '</span></br>';
+        _strim += '<span class=""><b>Scheme : </b>' + insurance_scheme + '</span></br>';
+        _strim += '<span class=""><b>Inurance No : </b>' + insurance_no + '</span></br>';
+		_strim += '<span class=""><b>Premium : </b>'+ insurance_premium +'</span></br>';
+		_strim += '<span class=""><b>Departments : </b>'+ insurance_department +'</span></br>';
+		_strim += '<span class=""><b>Scheme Start Date : </b>'+ insurance_scheme_start_date +'</span></br>';
+		_strim += '<span class=""><b>Scheme Expiry Date : </b>'+ insurance_scheme_expiry_date +'</span></br>';
+		
+        _strim += '</div>';
+        _strim += '</div>';
+	
+        _strim += '</div>';
+
+        // Append new HTML string to Table	
+        $("#table1").append(_strim);
+}
+
+
+function GetDataForCancellation(insurance_id) {
+var flg=0;
+localStorage.setItem("insurance_id",insurance_id);
+localStorage.setItem("flag",flg);
+  window.location.href = 'AddInsuranceDetails.html';
+}
+
+
+
+
+
+
+
+
+		
+	   function onLoad()
+     {
+        document.addEventListener("deviceready", onDeviceReady, false);
+     }
+     function onDeviceReady() 
+     {
+      document.addEventListener("backbutton", onBackKeyDown, false);
+     }
+     function onBackKeyDown()
+     {
+       //navigator.app.exitApp()
+    }
+	
+    </script>
+	
+	   
+       
+	
+	
+</body>
+
+</html>

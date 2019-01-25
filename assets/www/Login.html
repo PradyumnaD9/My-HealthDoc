@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--Import Google Icon Font-->
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+    <link href="fonts/material-icons/iconfont/material-icons.css" rel="stylesheet">
+	 <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" /> 
+    <!--Import materialize.css-->     
+    <link rel="stylesheet" href="css/login.css" type="text/css" media="all">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.js"></script>
+	<script type="text/javascript" src="cordova.js"></script>
+	
+	<script type="text/javascript" src="js/Login.js"></script>
+	
+	<style>
+	.red-asterisk{
+		 color:red;
+		}
+		
+		
+		/* Text inputs */
+input:not([type]),
+input[type=text]:not(.browser-default),
+input[type=password]:not(.browser-default),
+input[type=email]:not(.browser-default),
+input[type=url]:not(.browser-default),
+input[type=time]:not(.browser-default),
+input[type=date]:not(.browser-default),
+input[type=datetime]:not(.browser-default),
+input[type=datetime-local]:not(.browser-default),
+input[type=tel]:not(.browser-default),
+input[type=number]:not(.browser-default),
+input[type=search]:not(.browser-default),
+textarea.materialize-textarea {
+  background-color: transparent;
+  border: 1px solid #eee;
+  border-radius: 0;
+  outline: none;
+  /* height: 3rem; */
+  width: 50%;
+  font-size: 1rem;
+
+  padding: 16px 60px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border-radius: 30px 30px 30px 30px;
+}
+
+.waves-button-input{
+  outline: none;
+}
+    </style>	
+	
+   
+     
+</head>
+
+<body>
+ <div class="banner">
+<div class="agileinfo-dot">
+	<h1><img src="images/logo.png"></h1>
+	<!--<h1><img src="images/launchericon.png"></h1>-->
+	
+	
+    <div class="w3layoutscontaineragileits">
+	<form id="login-form" name="login-form" method="post">
+	<!--<h2>Prakash Memorial Clinic</h2>		-->
+			<input type="text" Name="user_username" id="user_username" placeholder="USERNAME" >	
+			<input type="password" Name="user_password" id="user_password" placeholder="PASSWORD" >
+			<ul class="agileinfotickwthree" style="display:none;">
+				<li>
+					<input type="checkbox" id="brand1" value="">
+					<label for="brand1"><span></span>Remember me</label>
+					<a href="#" >Forgot password?</a>
+				</li>
+			</ul>
+			<input type="text" id="hdnAPass" value="" style="height: 0px; width: 0px; display:none;">
+            <input type="text" id="hdnPass" value="" style="height: 0px; width: 0px; display:none;">
+			<div class="aitssendbuttonw3ls">
+				<input type="button" class="waves-effect waves-light btn" value="SIGN IN" onClick="handleLogin();">
+				<div class="clear"></div>
+			</div>	
+	</form>
+		<div class="new-user">New User? <a href="Registration.html" style="text-decoration: underline;">Sign Up</a></div>
+		<!--<div class="new-user"><a data-target="modal1" class=" modal-trigger" style="font-size:15px; text-decoration: underline;">Forgot password?</a></div>	-->
+	
+	</div>
+	<div class="w3footeragile">
+		<p> &copy; 2018. All Rights Reserved</p>
+	</div>
+</div>
+</div>
+
+    <!--Import jQuery before materialize.js-->
+    
+    <script>
+	 
+	 $("#user_password").keypress(function(e) {
+      if(e.which == 13) {
+        handleLogin();
+       }
+    });
+               
+   function isNumberKey(evt) {
+   
+            var charCode = (evt.which) ? evt.which : event.keyCode;
+            if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57)) {
+
+                $("label#ph_error").show();
+                $("input#mobile").focus();
+
+                return false;
+            }
+            $("label#ph_error").hide();
+
+            return true;
+        }
+
+	 </script>
+
+</body>
+
+</html>

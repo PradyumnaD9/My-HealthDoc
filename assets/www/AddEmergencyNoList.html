@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>     
+   
+	 <link href="fonts/material-icons/iconfont/material-icons.css" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+	
+	
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	
+	
+    <style>
+         
+
+        .t-scroller {
+            width: 100%;
+            overflow: auto;
+            max-height: 55vh;
+        }
+        .card{
+            margin-bottom: 0px !important;
+        }
+		input{
+		  width:95%!important;
+		  padding: 5px!important;
+		  border-radius: 2px!important;
+
+		}
+		span.screen-title {
+			    margin-left: 4rem!important;		 
+		}
+		.picker--opened .picker__frame {
+			top: 10px;
+		}
+		.red-asterisk{
+		 color:red;
+		}
+    </style>
+</head> 
+<body onload="findNumber();">     
+<ul id="slide-out" class="side-nav">
+        <li>
+            <div class="user-view">
+                <div class="background">
+
+                </div>
+                <a href="#!user">
+                    <img class="circle" src="images/yuna.jpg">
+                </a>
+                <a href="#!name">
+                    <span id="loginname" class="white-text name">Username</span>
+                </a>
+                
+            </div>
+        </li>
+        <li >
+            <a class="waves-effect" href="Menu.html">
+                <i class="material-icons">dashboard</i>Dashboard</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>   
+	
+		<li>
+            <a class="waves-effect" href="DemographicDetails.html">
+                <i class="material-icons">group</i>Demographic Details</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>        
+		<li>
+            <a class="waves-effect"  href="DoctorList.html">
+                <i class="material-icons">person</i>Consulting Doctors</a>
+        </li>
+		 <li>
+            <div class="divider"></div>
+        </li> 
+         <li>
+            <a class="waves-effect" href="AddDocVisit.html">
+                <i class="material-icons">add_box</i>Add Doctor Visit</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+		<li>
+            <a class="waves-effect" href="VisitList.html">
+                <i class="material-icons">file_upload</i>Upload Reports</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>
+		
+		<li>
+            <a class="waves-effect" href="Reports.html">
+                <i class="material-icons">assignment_turned_in</i>View Reports</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>
+		<li >
+            <a class="waves-effect" href="InsuranceList.html">
+                <i class="material-icons">description</i>Health Insurance</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+		
+		<li class="activated">
+            <a class="waves-effect" href="AddEmergencyNoList.html">
+                <i class="material-icons">call</i>Emergency Call</a>
+        </li>	
+		<li>
+            <div class="divider"></div>
+        </li>
+		
+		<li>
+            <a class="waves-effect" href="Setting.html">
+                <i class="material-icons">settings</i>Setting</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+        <li>
+            <a class="waves-effect" onClick="logout();">
+                <i class="material-icons">power_settings_new</i>Logout</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+    </ul>
+
+	
+	
+	
+	<nav class="nav-extended">
+        <div class="nav-wrapper">
+            <a href="#!" class="left brand-logo waves-effect" data-activates="slide-out">
+                <i class="material-icons menu">menu</i>
+            </a>
+            <span class="screen-title">Emergency Numbers</span>
+			<a href="Notification.html" class="noti"><i class="material-icons">notifications</i></a>
+        </div>
+    </nav>
+	
+	
+	<div class="col s12 m12">
+  
+		<div class="row">
+		
+			<div class="input-field col s12 m12" style="margin-bottom: 1rem;" id="addemeno">
+				<input type="button" id="btnAddEme" value="Add Emergency Number" class="col s12 m12 btn btn-block" />
+			</div>
+			<div class="input-field col s12 m12" style="margin-bottom: 1rem;" id="updateemeno">
+				<input type="button" id="btnUpdateEme" value="Update Emergency Number" class="col s12 m12 btn btn-block" />
+			</div>
+			
+		</div>
+		
+		<div class="row">		
+			<table name="mynumbers" class='table-striped' style="margin-left:5px;margin-right:5px" > 
+			<thead id="eno">
+			<tr>
+				<th width="70%">Number</th>
+				<th width="30%">Call</th>    
+			</tr>
+			</thead>
+			<tbody id="mynumbers" class="well-lg"></tbody>
+			</table>
+			
+		</div>
+	
+</div>
+   
+   	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>	 
+    <script type="text/javascript" src="js/materialize.js"></script>
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="js/Login.js"></script>
+	<script type="text/javascript" src="js/Logout.js"></script>
+
+	 
+    <script> 
+	
+	
+	$(document).ready(function () {
+	
+	 $("#addemeno").hide();
+	 $("#updateemeno").hide();
+});
+					   
+					   
+        // Initialize collapse button
+
+        $('.brand-logo').sideNav({
+            menuWidth: 300, // Default is 300
+            edge: 'left', // Choose the horizontal origin
+            closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            draggable: true, // Choose whether you can drag to open on touch screens,
+            onOpen: function (el) { /* Do Stuff */ }, // A function to be called when sideNav is opened
+            onClose: function (el) { /* Do Stuff */ }, // A function to be called when sideNav is closed
+        }
+        );
+		
+    	
+	var loginname = localStorage.getItem('user_name');
+    $('#loginname').text(loginname);
+	var User_id = localStorage.getItem('u_id');
+	//alert(User_id);
+	  
+         $('#loginname').text(loginname);
+	
+         $("#btnAddEme").click(function () {	
+		      window.location.href="AddEmergencyNo.html";
+        });
+		
+		 $("#btnUpdateEme").click(function () {	
+		      window.location.href="AddEmergencyNo.html";
+        });
+		
+		
+		
+		$(function(){
+
+				try{
+				$.ajax({
+
+				type: "POST",
+				url: "https://www.manoramahealthcare.com/health_record_organizer/emergency_contact_list.php",
+				data : 'user_id=' + User_id, 
+				success: function (msg)
+				{
+				var parseJson = JSON.parse(msg);    
+				
+				console.log(parseJson.message);
+				if(parseJson.result==false){
+				
+				  $("#mynumbers").append("<span class='norecord'>No Emergency Number Added</span>");
+				  $("#addemeno").show();
+				  
+				  
+				  return false;
+				}
+				
+				
+				for(var i =0;i < parseJson.message.length;i++)
+				{
+			     	$("#mynumbers").append('<tr><td width="70%" >'+ parseJson.message[i].contact_emergency+"<br>"+parseJson.message[i].contact_priority+'</td><td width="30%" class="callno" data-mob="'+parseJson.message[i].contact_emergency+'"><span><i class="Small material-icons callr">phone</i></span></td></tr>');
+
+				}
+				$(".callno").click(function(){
+				var mob = $(this).attr('data-mob');			
+				dial(mob);
+				});
+				},
+
+				});
+				} catch(e){
+				if(e.status == '0'){
+				//	alert("Request failed");
+
+				
+				} else if(e.status == '404') {
+				//	alert("Page not found");
+
+			
+				} else if(e.status == '500') {
+				//	alert("Internal Server Error.");
+
+			
+				}
+				else {
+				return; //skip this error
+				}
+				}
+
+				});
+function onSuccess(result){
+  console.log("Success:"+result);
+}
+
+function onError(result) {
+ console.log("Error:"+result);
+}
+function dial(number){
+ //alert(number);
+  //console.log("Launching Calling Service for number "+number);
+  window.plugins.CallNumber.callNumber(onSuccess, onError, number, false);
+}
+		
+		
+		
+		
+		function findNumber(){
+		
+		//var User_id = localStorage.getItem('u_id');
+		
+		$.ajax({
+              type: "POST",
+			
+			    url: "https://www.manoramahealthcare.com/health_record_organizer/emergency_contact_flag.php",
+				data: {user_id: User_id},
+			    success: function(data) {
+				  console.log(data);
+				  var responce = JSON.parse(data);
+				  
+				  
+				  console.log(responce.result);
+				  
+				  var emergency_contact_id = responce.message.emergency_contact_id;
+				  console.log(emergency_contact_id);
+				
+				   if(responce.result==true){
+					   
+					   $("#addemeno").hide();
+					   $("#updateemeno").show();
+					   
+				
+					   
+				   }
+				  
+				  
+			  },
+			   error		: function (msg) 
+	                  				{
+	                  				//   alert("Error");
+	                  				}
+	 });
+	 
+	}
+	
+    </script>  
+</body> 	
+</html>

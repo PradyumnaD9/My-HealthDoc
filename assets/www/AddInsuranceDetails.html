@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>     
+   
+	 <link href="fonts/material-icons/iconfont/material-icons.css" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/style.css" />	
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />	
+	
+    <style>        
+
+        .t-scroller {
+            width: 100%;
+            overflow: auto;
+            max-height: 55vh;
+        }
+        .card{
+            margin-bottom: 0px !important;
+        }
+		input{
+		  width:95%!important;
+		  padding: 5px!important;
+		  border-radius: 2px!important;
+
+		}
+		span.screen-title {
+			    margin-left: 4rem!important;		 
+		}
+		.picker--opened .picker__frame {
+			top: 10px;
+		}
+		.red-asterisk{
+		 color:red;
+		}
+    </style>
+</head> 
+<body>     
+<ul id="slide-out" class="side-nav">
+        <li>
+            <div class="user-view">
+                <div class="background">
+
+                </div>
+                <a href="#!user">
+                    <img class="circle" src="images/yuna.jpg">
+                </a>
+                <a href="#!name">
+                    <span id="loginname" class="white-text name">Username</span>
+                </a>
+                
+            </div>
+        </li>
+        <li >
+            <a class="waves-effect" href="Menu.html">
+                <i class="material-icons">dashboard</i>Dashboard</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>   
+	
+		<li>
+            <a class="waves-effect" href="DemographicDetails.html">
+                <i class="material-icons">group</i>Demographic Details</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>        
+		<li>
+            <a class="waves-effect"  href="DoctorList.html">
+                <i class="material-icons">person</i>Consulting Doctors</a>
+        </li>
+		 <li>
+            <div class="divider"></div>
+        </li> 
+         <li>
+            <a class="waves-effect" href="AddDocVisit.html">
+                <i class="material-icons">add_box</i>Add Doctor Visit</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+		<li>
+            <a class="waves-effect" href="VisitList.html">
+                <i class="material-icons">file_upload</i>Upload Reports</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>
+		
+		<li>
+            <a class="waves-effect" href="Reports.html">
+                <i class="material-icons">assignment_turned_in</i>View Reports</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>
+		<li class="activated">
+            <a class="waves-effect" href="InsuranceList.html">
+                <i class="material-icons">description</i>Health Insurance</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+		
+		<li>
+            <a class="waves-effect" href="AddEmergencyNoList.html">
+                <i class="material-icons">call</i>Emergency Call</a>
+        </li>	
+		<li>
+            <div class="divider"></div>
+        </li>
+		
+		<li>
+            <a class="waves-effect" href="Setting.html">
+                <i class="material-icons">settings</i>Setting</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+        <li>
+            <a class="waves-effect" onClick="logout();">
+                <i class="material-icons">power_settings_new</i>Logout</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+    </ul>
+
+	
+	
+	<nav class="nav-extended">
+        <div class="nav-wrapper">
+            <a href="#!" class="left brand-logo waves-effect" data-activates="slide-out">
+                <i class="material-icons menu">menu</i>
+            </a>
+            <span class="screen-title">Insurance Details</span>
+			<a href="Notification.html" class="noti"><i class="material-icons">notifications</i></a>
+        </div>
+    </nav>
+	
+	
+		<div class="row" style="overflow: auto; height: 90vh; margin-bottom:0px;">
+        <form id="Insurance-form" name="Insurance-form">                
+		<div class="col s12 m12"> 
+            <div class="col s12 m12">   
+			
+			   <div class="input-field col s12 m4" style="display:none;">
+				<input type="hidden" id="user_id" name="user_id" />				
+			  </div>
+			  <div class="input-field col s12 m4">
+				<input type="hidden" id="insurance_id" name="insurance_id" />				
+			  </div>
+			  
+              <div class="input-field col s12 m4">
+				<label>Company / Client Name <span class='red-asterisk'>*</span></label>
+				<input type="text" id="insurance_company"  name="insurance_company" />				
+			  </div>
+			  
+			  <div class="input-field col s12 m4">
+				<label>Scheme Name<span class='red-asterisk'>*</span></label>
+				<input type="text" id="insurance_scheme"  name="insurance_scheme" />				
+			  </div>
+			 
+               <div class="input-field col s12 m4">
+				<label>Premium / Cover<span class='red-asterisk'>*</span></label>
+				<input type="text" id="insurance_premium"  name="insurance_premium" />				
+			  </div>
+			  
+			   <div class="input-field col s12 m4">     
+                <label for="sdate">Scheme Start Date<span class='red-asterisk'>*</span></label>              
+                <input type="date" class="datepicker" id="insurance_scheme_start_date" name="insurance_scheme_start_date" placeholder="mm/dd/yyyy"  />  
+
+				</div>
+			  <div class="input-field col s12 m4">     
+                <label for="edate">Scheme Expiry Date<span class='red-asterisk'>*</span></label>              
+                <input type="date" class="datepicker" id="insurance_scheme_expiry_date" name="insurance_scheme_expiry_date" placeholder="mm/dd/yyyy"  />                    
+              </div>
+			  <div class="input-field col s12 m4">                 
+                <label>Insurance No<span class='red-asterisk'>*</span></label>
+				  	<input type="text" id="insurance_no" name="insurance_no" />
+              </div>
+			  
+		
+			  
+			  <div class="input-field col s12 m4">     
+                <label>Selected Departments </label>              
+                <textarea type="text" id="insurance_department" name="insurance_department"></textarea>                    
+              </div>                           
+			 
+			 
+             			  
+              <div id="addinsurance" class="input-field col s12 m12" style="margin-bottom: 1rem;" > 
+			  <a onmousedown="AddInsuranceDetails();"  class="col s12 m12 waves-effect waves-light btn modal-trigger btn-block">Save</a>
+			  </div>
+			  
+			   <div id="updateinsurance"class="input-field col s12 m12" style="margin-bottom: 1rem;"> 
+			   <a id="updateInsuranceDetails"  class="col s12 m12 waves-effect waves-light btn modal-trigger btn-block">Update</a>
+			  </div>
+            </div>
+			</div>
+			</form>
+    </div>
+
+   
+   	  <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>	 
+    <script type="text/javascript" src="js/materialize.js"></script>
+	 <script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="js/Login.js"></script>
+	 <script type="text/javascript" src="js/Logout.js"></script>
+	 <script type="text/javascript" src="js/AddInsuranceDetails.js"></script>
+	 
+    <script> 
+	
+	
+        // Initialize collapse button
+	
+	var loginname = localStorage.getItem('user_name');
+    $('#loginname').text(loginname);
+        $('.brand-logo').sideNav({
+            menuWidth: 300, // Default is 300
+            edge: 'left', // Choose the horizontal origin
+            closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            draggable: true, // Choose whether you can drag to open on touch screens,
+            onOpen: function (el) { /* Do Stuff */ }, // A function to be called when sideNav is opened
+            onClose: function (el) { /* Do Stuff */ }, // A function to be called when sideNav is closed
+        }
+        );
+		 $('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 70, // Creates a dropdown of 15 years to control year,
+            today: 'Today',
+            clear: 'Clear',
+            close: 'Ok',
+			format:"mm/dd/yyyy",
+            closeOnSelect: false // Close upon selecting a date,	
+        });
+   
+		
+    </script>  
+</body> 	
+</html>

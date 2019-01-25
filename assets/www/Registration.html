@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>     
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+    <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>	 
+    <script type="text/javascript" src="js/materialize.js"></script>
+	 <script type="text/javascript" src="js/Register.js"></script>
+    <style>
+         
+
+        .t-scroller {
+            width: 100%;
+            overflow: auto;
+            max-height: 55vh;
+        }
+        .card{
+            margin-bottom: 0px !important;
+        }
+		input{
+		  width:95%!important;
+		  padding: 5px!important;
+		  border-radius: 2px!important;
+
+		}
+		span.screen-title {
+			margin-left: 2rem!important;			 
+		}
+		.picker--opened .picker__frame {
+			top: 10px;
+		}
+		.red-asterisk{
+		 color:red;
+		}
+    </style>
+</head> 
+<body>     
+	<nav class="nav-extended">
+        <div class="nav-wrapper">             
+            <span class="screen-title">Sign Up</span>
+        </div>
+    </nav>
+    <div class="row" style="overflow: auto; height: 90vh; margin-bottom:0px;">
+        <form id="register-form" name="register-form">                
+            <div class="col s12 m12">     
+              <div class="input-field col s12 m4">
+				<label>Name <span class='red-asterisk'>*</span></label>
+				<input type="text" id="user_name" name="user_name"/>				
+			  </div>
+			   <div class="input-field col s12 m4">     
+                <label for="dob">Enter Date Of Birth <span class='red-asterisk'>*</span></label>              
+                <input type="date" class="datepicker" id="user_dob" name="user_dob" placeholder="mm/dd/yyyy" >                    
+              </div>
+			 <div class="input-field col s12 m4" style="padding-left: 0;margin-top: 0;"> 
+				  <div class="input-field col s6 m4">     
+					<label >Age<span class='red-asterisk'>*</span></label>              
+					<input  id="user_age" name="user_age" placeholder="" >                    
+				  </div>
+				  <div class="input-field col s6 m4">                 
+					<label>Select Gender <span class='red-asterisk'>*</span></label>
+					<select id="user_gender" name="user_gender">
+						<option value="" >--Gender--</option>					 
+						<option value="M" >Male</option>					 
+						<option value="F" >Female</option>	
+											
+					</select>  	
+				  </div>
+              </div>
+			    <div class="input-field col s12 m4">                 
+                <label>Select BloodGroup <span class='red-asterisk'>*</span></label>
+				<select id="user_blood_group" name="user_blood_group">
+					<option value="" >--Select--</option>					 
+					<option value="A+" >A+</option>					 
+					<option value="A-" >A-</option>	
+					<option value="B+" >B+</option>					 
+					<option value="B-" >B-</option>
+					<option value="O+" >O+</option>					 
+					<option value="O-" >O-</option>
+					<option value="AB+" >AB+</option>					 
+					<option value="AB-" >AB-</option>					
+				</select>  	
+              </div>
+			   <div class="input-field col s12 m4">     
+                <label for="mobile">Enter Mobile <span class='red-asterisk'>*</span></label>  
+            <!--     <input type="text" id="mblprefix" readonly>-->
+                <input id="user_mobile" name="user_mobile" oninput="if(value.length>10)value=value.slice(0,10)" type="tel" onkeypress="return isNumberKey(event)" />		
+            <!--    <input type="text" id="mobile">                    -->
+              </div> 
+			  <div class="input-field col s12 m4">     
+                <label for="email">Enter Email </label>              
+                <input type="text" id="user_email" name="user_email">                    
+              </div>                           
+			  <div class="input-field col s12 m4" style="padding-left: 0;margin-top: 0;">
+				  <div class="input-field col s6 m4">
+					<label>Weight </label>
+					<input type="text" id="user_weight" name="user_weight"/>				
+				  </div>
+				  <div class="input-field col s6 m4">
+					<label>Height </label>
+					<input type="text" id="user_height" name="user_height"/>				
+				  </div>
+			  </div>
+			   <div class="input-field col s12 m4">     
+                <label >Occupation<span class='red-asterisk'>*</span></label>              
+                <input  id="user_occupation" name="user_occupation" >                    
+              </div>
+			   <div class="input-field col s12 m4">
+                <label>Allergies </label>
+				<textarea id="user_allergies" name="user_allergies"></textarea>				
+			  </div>
+			   <div class="input-field col s12 m4">
+                <label>Medical History </label>
+				<textarea id="user_medical_history" name="user_medical_history"></textarea>				
+			  </div>
+			  <div class="input-field col s12 m4">
+                <label>Surgical History </label>
+				<textarea id="user_surgical_history" name="user_surgical_history"></textarea>				
+			  </div>
+			  <div class="input-field col s12 m4">
+                <label>Username <span class='red-asterisk'>*</span></label>
+				 <input id="user_username" name="user_username" type="text" />				
+			  </div>  
+                <div class="input-field col s12 m4">     
+                <label for="pass">Enter Password <span class='red-asterisk'>*</span></label>              
+                <input type="password" id="user_password" name="user_password" id="pass" >                    
+              </div>  
+              <div class="input-field col s12 m4">     
+                <label for="cpass">Confirm Password <span class='red-asterisk'>*</span></label>              
+                <input type="password" id="cpass" name="cpass">                    
+              </div>
+			  <div class="input-field col s12 m4">
+			  </div>			  
+              <div class="input-field col s12 m12" style="margin-bottom: 1rem;"> 
+			<!--	<a onClick="regUser();" class="col s12 m12 waves-effect waves-light btn btn-block">Submit</a>-->
+			
+              <a onmousedown="ValidateForm();"  class="col s12 m12 waves-effect waves-light btn modal-trigger btn-block">Sign Up</a>
+			
+			  </div>
+            </div>
+			</form>
+    </div>	
+
+</body>    
+   	       
+    <script> 
+      $(document).ready(function(){
+	  
+		
+	    $('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 70, // Creates a dropdown of 15 years to control year,
+            today: 'Today',
+            clear: 'Clear',
+            close: 'Ok',
+			format:"mm/dd/yyyy",
+            closeOnSelect: false, // Close upon selecting a date,	
+			onSet: function () {
+			var bdate = new Date($("#user_dob").val());		
+			dob = new Date(bdate);
+			var today = new Date();
+			var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+			$('#user_age').val(age+' years old');
+			//alert(age);
+		}		
+		
+		
+		});
+	  })	
+	 
+	  function isNumberKey(evt) {
+	 
+            var charCode = (evt.which) ? evt.which : event.keyCode;
+            if (charCode != 46 && charCode > 31
+                && (charCode < 48 || charCode > 57)) {
+
+                $("label#ph_error").show();
+                $("input#mobile").focus();
+
+                return false;
+            }
+            $("label#ph_error").hide();
+
+            return true;
+        }
+		
+    </script>     
+</html>

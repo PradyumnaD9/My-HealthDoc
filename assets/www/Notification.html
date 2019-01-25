@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+
+<head>  
+    <link href="fonts/material-icons/iconfont/material-icons.css" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+	
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="js/Login.js"></script>
+	 <script type="text/javascript" src="js/Logout.js"></script>
+	 
+	  <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.js"></script>
+<style>
+.h6, h6 {
+    font-size: 16px;
+}
+.apptText{
+  padding: 6px;
+}
+</style>
+</head>
+
+<body onload="showList();">
+ <ul id="slide-out" class="side-nav">
+        <li>
+            <div class="user-view">
+                <div class="background">
+
+                </div>
+                <a href="#!user">
+                    <img class="circle" src="images/yuna.jpg">
+                </a>
+                <a href="#!name">
+                    <span id="loginname" class="white-text name">Username</span>
+                </a>
+                
+            </div>
+        </li>
+        <li >
+            <a class="waves-effect" href="Menu.html">
+                <i class="material-icons">dashboard</i>Dashboard</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>   
+	
+		<li>
+            <a class="waves-effect" href="DemographicDetails.html">
+                <i class="material-icons">group</i>Demographic Details</a>
+        </li>
+		
+		 <li>
+            <div class="divider"></div>
+        </li> 
+         <li>
+            <a class="waves-effect" href="AddDocVisit.html">
+                <i class="material-icons">add_box</i>Add Visits</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>        
+		
+	 
+		<li>
+            <a class="waves-effect"  href="DoctorList.html">
+                <i class="material-icons">person</i>Consulting Doctors</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>
+		
+		
+		<li>
+            <a class="waves-effect" href="InsuranceList.html">
+                <i class="material-icons">description</i>Health Insurance</a>
+        </li>
+		
+		
+		<li>
+            <div class="divider"></div>
+        </li>
+		<li>
+            <a class="waves-effect" href="VisitList.html">
+                <i class="material-icons">assignment_ind</i>Previous Visit Details</a>
+        </li>
+		
+        <li>
+            <div class="divider"></div>
+        </li>
+		
+		<li>
+            <a class="waves-effect" href="AddEmergencyNoList.html">
+                <i class="material-icons">call</i>Emergency Call</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>
+		
+		<li>
+            <a class="waves-effect" href="Reports.html">
+                <i class="material-icons">assignment_turned_in</i>Report</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>
+		<li>
+            <a class="waves-effect" href="AddReport.html">
+                <i class="material-icons">assignment_turned_in</i>Lab Report</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>
+		
+		<li>
+            <a class="waves-effect" href="Setting.html">
+                <i class="material-icons">settings</i>Setting</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+        <li>
+            <a class="waves-effect" onClick="logout();">
+                <i class="material-icons">power_settings_new</i>Logout</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+    </ul>
+
+
+   <nav class="nav-extended">
+        <div class="nav-wrapper">
+            <a href="#!" class="left brand-logo waves-effect" data-activates="slide-out">
+                <i class="material-icons menu">menu</i>
+            </a>
+            <span class="screen-title">Notifications</span>
+			<a href="Notification.html" class="noti"><i class="material-icons">notifications</i></a>
+        </div>
+    </nav>
+
+    <div class="row" style="margin-top: 15px;">
+	
+	 <div class="col s12 m12">
+            <div class=" with-header" id="table1" style="margin-bottom:60px;">
+	 </div>
+	 </div>
+       
+    </div>
+   
+   
+    
+    <script>
+	
+	
+	
+
+        // Initialize collapse button
+
+        $('.brand-logo').sideNav({
+            menuWidth: 300, // Default is 300
+            edge: 'left', // Choose the horizontal origin
+            closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            draggable: true, // Choose whether you can drag to open on touch screens,
+            onOpen: function (el) { /* Do Stuff */ }, // A function to be called when sideNav is opened
+            onClose: function (el) { /* Do Stuff */ }, // A function to be called when sideNav is closed
+        }
+        );
+
+	
+
+       
+		function showList(){
+		
+				var User_id = localStorage.getItem('u_id');
+				
+				$.ajax({
+
+				type: "POST",
+				url: "https://www.manoramahealthcare.com/health_record_organizer/notification_list.php",
+				data : 'user_id=' + User_id, 
+				success: function (msg)
+				{
+				
+				 var responce = JSON.parse(msg);
+				 console.log(responce);
+				 if(responce.result == false){
+				 
+				  $("#table1").append("<span class='norecord'>No Notifications To Show<span>");
+				
+				 
+				 }else {
+				 var Resourcetable = responce.message;
+				 console.log(Resourcetable);
+				 for(var i =0;i < Resourcetable.length;i++)
+				 {
+				   console.log(Resourcetable[i].insurance_id);
+				   bindList(Resourcetable[i].notification_message,Resourcetable[i].user_id);
+				 }
+				 }
+				 
+				 },
+				error		: function(response)
+							  {   
+									console.log(response);                         
+							  }
+				
+				});
+		}
+	 
+	function bindList(notification_message,user_id)
+{
+	
+	 flag=1;
+		
+	     var _strim = "";
+
+        _strim += '<div class="row card" >';
+       
+        _strim += '<div class="col s9" style="margin-top: 5px;margin-bottom: 5px;">';
+        _strim += '<div class="apptText"> ';
+        _strim += '<span class="">' + notification_message + '</span></br>';
+       
+		
+        _strim += '</div>';
+        _strim += '</div>';
+	
+        _strim += '</div>';
+
+        // Append new HTML string to Table	
+        $("#table1").append(_strim);
+}
+
+
+ 
+	   function onLoad()
+     {
+        document.addEventListener("deviceready", onDeviceReady, false);
+     }
+     function onDeviceReady() 
+     {
+      document.addEventListener("backbutton", onBackKeyDown, false);
+     }
+     function onBackKeyDown()
+     {
+       window.location.href = 'Setting.html';
+    }
+	
+	
+	 var loginname = localStorage.getItem('user_name');
+    $('#loginname').text(loginname);
+    </script>
+	
+	
+	      
+       
+	
+	
+</body>
+
+</html>

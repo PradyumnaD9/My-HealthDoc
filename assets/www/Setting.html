@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>  
+    <link href="fonts/material-icons/iconfont/material-icons.css" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="js/Login.js"></script>
+	 <script type="text/javascript" src="js/Logout.js"></script>
+	 
+	  <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.js"></script>
+<style>
+.h6, h6 {
+    font-size: 16px;
+}
+</style>
+</head>
+
+<body >
+ <ul id="slide-out" class="side-nav">
+        <li>
+            <div class="user-view">
+                <div class="background">
+
+                </div>
+                <a href="#!user">
+                    <img class="circle" src="images/yuna.jpg">
+                </a>
+                <a href="#!name">
+                    <span id="loginname" class="white-text name">Username</span>
+                </a>
+                
+            </div>
+        </li>
+         <li >
+            <a class="waves-effect" href="Menu.html">
+                <i class="material-icons">dashboard</i>Dashboard</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>   
+	
+		<li>
+            <a class="waves-effect" href="DemographicDetails.html">
+                <i class="material-icons">group</i>Demographic Details</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>        
+		<li>
+            <a class="waves-effect"  href="DoctorList.html">
+                <i class="material-icons">person</i>Consulting Doctors</a>
+        </li>
+		 <li>
+            <div class="divider"></div>
+        </li> 
+         <li>
+            <a class="waves-effect" href="AddDocVisit.html">
+                <i class="material-icons">add_box</i>Add Doctor Visit</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+		<li>
+            <a class="waves-effect" href="VisitList.html">
+                <i class="material-icons">assignment_turned_in</i>Upload Reports</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>
+		
+		<li>
+            <a class="waves-effect" href="Reports.html">
+                <i class="material-icons">assignment_turned_in</i>View Reports</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>
+		<li >
+            <a class="waves-effect" href="InsuranceList.html">
+                <i class="material-icons">description</i>Health Insurance</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+		
+		<li >
+            <a class="waves-effect" href="AddEmergencyNoList.html">
+                <i class="material-icons">call</i>Emergency Call</a>
+        </li>	
+		<li>
+            <div class="divider"></div>
+        </li>	
+		<li class="activated">
+            <a class="waves-effect" href="Setting.html">
+                <i class="material-icons">settings</i>Setting</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+        <li>
+            <a class="waves-effect" onClick="logout();">
+                <i class="material-icons">power_settings_new</i>Logout</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+    </ul>
+
+
+    <nav class="nav-extended">
+        <div class="nav-wrapper">
+            <a href="#!" class="left brand-logo waves-effect" data-activates="slide-out">
+                <i class="material-icons menu">menu</i>
+            </a>
+            <span style=" font-size: 1.5rem;margin-left: 4em!important;">Setting</span>
+	<a href="Notification.html" class="noti"><i class="material-icons">notifications</i></a>
+        </div>
+    </nav>
+
+    <div class="row" style="margin-top: 15px;">
+	
+	 <div class="col s12 m12">
+            <a href="ChangePassword.html">
+                <div class="card-panel cyan">
+                    <div class="white-text center">
+                        <i class="material-icons" style="font-size:3rem;">dashboard</i>
+                        <h6>Change Password</h6>
+                    </div>
+                </div>
+            </a>
+        </div>
+		
+   <!--     <div class="col s12 m12">
+             <a href="Notification.html">
+                <div class="card-panel cyan">
+                    <div class="white-text center">
+                        <i class="material-icons" style="font-size:3rem;">dashboard</i>
+                        <h6>Notifications</h6>
+                    </div>
+                </div>
+            </a>
+        </div>-->
+      
+       
+
+    </div>
+   
+   
+    
+    <script>
+	
+	
+	var loginname = localStorage.getItem('user_name');
+    $('#loginname').text(loginname);
+
+        // Initialize collapse button
+
+        $('.brand-logo').sideNav({
+            menuWidth: 300, // Default is 300
+            edge: 'left', // Choose the horizontal origin
+            closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            draggable: true, // Choose whether you can drag to open on touch screens,
+            onOpen: function (el) { /* Do Stuff */ }, // A function to be called when sideNav is opened
+            onClose: function (el) { /* Do Stuff */ }, // A function to be called when sideNav is closed
+        }
+        );
+
+	
+
+      
+	 
+	 
+	   function onLoad()
+     {
+        document.addEventListener("deviceready", onDeviceReady, false);
+     }
+     function onDeviceReady() 
+     {
+      document.addEventListener("backbutton", onBackKeyDown, false);
+     }
+     function onBackKeyDown()
+     {
+        window.location.href = 'Menu.html';
+    }
+	
+    </script>
+	
+	
+	      
+       
+	
+	
+</body>
+
+</html>

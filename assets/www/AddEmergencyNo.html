@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>     
+   
+	 <link href="fonts/material-icons/iconfont/material-icons.css" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+	
+	
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	
+	
+    <style>
+         
+
+        .t-scroller {
+            width: 100%;
+            overflow: auto;
+            max-height: 55vh;
+        }
+        .card{
+            margin-bottom: 0px !important;
+        }
+		input{
+		  width:95%!important;
+		  padding: 5px!important;
+		  border-radius: 2px!important;
+
+		}
+		span.screen-title {
+			    margin-left: 4rem!important;		 
+		}
+		.picker--opened .picker__frame {
+			top: 10px;
+		}
+		.red-asterisk{
+		 color:red;
+		}
+    </style>
+</head> 
+<body onload="findNumber();">     
+<ul id="slide-out" class="side-nav">
+        <li>
+            <div class="user-view">
+                <div class="background">
+
+                </div>
+                <a href="#!user">
+                    <img class="circle" src="images/yuna.jpg">
+                </a>
+                <a href="#!name">
+                    <span id="loginname" class="white-text name">Username</span>
+                </a>
+                
+            </div>
+        </li>
+         <li >
+            <a class="waves-effect" href="Menu.html">
+                <i class="material-icons">dashboard</i>Dashboard</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>   
+	
+		<li>
+            <a class="waves-effect" href="DemographicDetails.html">
+                <i class="material-icons">group</i>Demographic Details</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>        
+		<li>
+            <a class="waves-effect"  href="DoctorList.html">
+                <i class="material-icons">person</i>Consulting Doctors</a>
+        </li>
+		 <li>
+            <div class="divider"></div>
+        </li> 
+         <li>
+            <a class="waves-effect" href="AddDocVisit.html">
+                <i class="material-icons">add_box</i>Add Doctor Visit</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+		<li>
+            <a class="waves-effect" href="VisitList.html">
+                <i class="material-icons">file_upload</i>Upload Reports</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>
+		
+		<li>
+            <a class="waves-effect" href="Reports.html">
+                <i class="material-icons">assignment_turned_in</i>View Reports</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>
+		<li >
+            <a class="waves-effect" href="InsuranceList.html">
+                <i class="material-icons">description</i>Health Insurance</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+		
+		<li class="activated">
+            <a class="waves-effect" href="AddEmergencyNoList.html">
+                <i class="material-icons">call</i>Emergency Call</a>
+        </li>	
+		<li>
+            <div class="divider"></div>
+        </li>
+		
+		<li>
+            <a class="waves-effect" href="Setting.html">
+                <i class="material-icons">settings</i>Setting</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+        <li>
+            <a class="waves-effect" onClick="logout();">
+                <i class="material-icons">power_settings_new</i>Logout</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+    </ul>
+
+	
+	
+	
+	<nav class="nav-extended">
+        <div class="nav-wrapper">
+            <a href="#!" class="left brand-logo waves-effect" data-activates="slide-out">
+                <i class="material-icons menu">menu</i>
+            </a>
+            <span class="screen-title">Emergency Numbers</span>
+			<a href="Notification.html" class="noti"><i class="material-icons">notifications</i></a>
+        </div>
+    </nav>
+	
+	
+    <div class="row" style="overflow: auto; height: 90vh; margin-bottom:0px;">
+        <form id="addemergencyno-form" name="addemergencyno-form">                
+            <div class="col s12 m12">   
+			
+              <div class="input-field col s12 m4">
+				<label for="mobile">Primary Number <span class='red-asterisk'>*</span> </label>
+				<input id="pri_no" name="pri_no" oninput="if(value.length>10)value=value.slice(0,10)" type="tel" onkeypress="return isNumberKey(event)" />				
+			  </div>
+			  
+			  <div class="input-field col s12 m4">                 
+                <label>Secondory Number <span class='red-asterisk'>*</span></label>
+				  	<input  id="sec_no" name="sec_no" oninput="if(value.length>10)value=value.slice(0,10)" type="tel" onkeypress="return isNumberKey(event)"/>
+              </div>
+			  
+			 
+			 			  
+              <div class="input-field col s12 m12" style="margin-bottom: 1rem;" id="addemeno"> 
+			  <a onmousedown="AddEmergencyNo();"  class="col s12 m12 waves-effect waves-light btn modal-trigger btn-block">Add Numbers</a>
+			  </div>
+			  
+			   <div class="input-field col s12 m12" style="margin-bottom: 1rem;" id="updateemeno"> 
+			   <a onmousedown="UpdateEmergencyNo();"  class="col s12 m12 waves-effect waves-light btn modal-trigger btn-block">Update Numbers</a>
+			  </div>
+			  
+            </div>
+			</form>
+    </div>	
+
+   
+   	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>	 
+    <script type="text/javascript" src="js/materialize.js"></script>
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="js/Login.js"></script>
+	<script type="text/javascript" src="js/Logout.js"></script>
+	<script type="text/javascript" src="js/AddEmergencyNo.js"></script>
+	 
+    <script> 
+	
+		
+	var loginname = localStorage.getItem('user_name');
+    $('#loginname').text(loginname);
+        // Initialize collapse button
+
+        $('.brand-logo').sideNav({
+            menuWidth: 300, // Default is 300
+            edge: 'left', // Choose the horizontal origin
+            closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            draggable: true, // Choose whether you can drag to open on touch screens,
+            onOpen: function (el) { /* Do Stuff */ }, // A function to be called when sideNav is opened
+            onClose: function (el) { /* Do Stuff */ }, // A function to be called when sideNav is closed
+        }
+        );
+		
+   function isNumberKey(evt) {
+	 
+            var charCode = (evt.which) ? evt.which : event.keyCode;
+            if (charCode != 46 && charCode > 31
+                && (charCode < 48 || charCode > 57)) {
+
+                $("label#ph_error").show();
+                $("input#mobile").focus();
+
+                return false;
+            }
+            $("label#ph_error").hide();
+
+            return true;
+        }
+		
+    </script>  
+</body> 	
+</html>

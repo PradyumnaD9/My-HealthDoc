@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>     
+   
+	 <link href="fonts/material-icons/iconfont/material-icons.css" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+	<script type="text/javascript" src="cordova.js"></script>
+	
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	
+	
+    <style>
+         
+
+        .t-scroller {
+            width: 100%;
+            overflow: auto;
+            max-height: 55vh;
+        }
+        .card{
+            margin-bottom: 0px !important;
+        }
+		input{
+		  width:95%!important;
+		  padding: 5px!important;
+		  border-radius: 2px!important;
+
+		}
+		span.screen-title {
+			    margin-left: 4rem!important;		 
+		}
+		.picker--opened .picker__frame {
+			top: 10px;
+		}
+		.red-asterisk{
+		 color:red;
+		}
+    </style>
+</head> 
+<body onload="showDemographic();">     
+ <ul id="slide-out" class="side-nav">
+        <li>
+            <div class="user-view">
+                <div class="background">
+
+                </div>
+                <a href="#!user">
+                    <img class="circle" src="images/yuna.jpg">
+                </a>
+                <a href="#!name">
+                    <span id="loginname" class="white-text name">Username</span>
+                </a>
+                
+            </div>
+        </li>
+        <li >
+            <a class="waves-effect" href="Menu.html">
+                <i class="material-icons">dashboard</i>Dashboard</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>   
+	
+		<li class="activated">
+            <a class="waves-effect" href="DemographicDetails.html">
+                <i class="material-icons">group</i>Demographic Details</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>        
+		
+	 
+		<li>
+            <a class="waves-effect"  href="DoctorList.html">
+                <i class="material-icons">person</i>Consulting Doctors</a>
+        </li>
+		 <li>
+            <div class="divider"></div>
+        </li> 
+         <li>
+            <a class="waves-effect" href="AddDocVisit.html">
+                <i class="material-icons">add_box</i>Add Doctor Visit</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+		<li>
+            <a class="waves-effect" href="VisitList.html">
+                <i class="material-icons">file_upload</i>Upload Reports</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>
+		
+		<li>
+            <a class="waves-effect" href="Reports.html">
+                <i class="material-icons">assignment_turned_in</i>View Reports</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>
+		<li>
+            <a class="waves-effect" href="InsuranceList.html">
+                <i class="material-icons">description</i>Health Insurance</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+		
+		<li>
+            <a class="waves-effect" href="AddEmergencyNoList.html">
+                <i class="material-icons">call</i>Emergency Call</a>
+        </li>	
+		<li>
+            <div class="divider"></div>
+        </li>
+		
+		<li>
+            <a class="waves-effect" href="Setting.html">
+                <i class="material-icons">settings</i>Setting</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+        <li>
+            <a class="waves-effect" onClick="logout();">
+                <i class="material-icons">power_settings_new</i>Logout</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+    </ul>
+
+	
+	
+	
+	<nav class="nav-extended">
+        <div class="nav-wrapper">
+            <a href="#!" class="left brand-logo waves-effect" data-activates="slide-out">
+                <i class="material-icons menu">menu</i>
+            </a>
+            <span class="screen-title">Demographic Details</span>
+			<a href="Notification.html" class="noti"><i class="material-icons">notifications</i></a>
+        </div>
+    </nav>
+	
+	
+    <div class="row" style="overflow: auto; height: 90vh; margin-bottom:0px;">
+        <form id="demographic-form" name="demographic-form">                
+            <div class="col s12 m12">   
+			  <div class="input-field col s12 m4">
+				
+				<input type="hidden" id="user_id" name="user_id" />				
+			  </div>
+              <div class="input-field col s12 m4">
+				<label>Name </label>
+				<input type="text" id="user_name"  readonly />				
+			  </div>
+			   <div class="input-field col s12 m4">     
+                <label for="dob">Enter Date Of Birth</label>              
+                <input type="text" id="user_dob"  placeholder="mm/dd/yyyy" readonly />                    
+              </div>
+			  <div class="input-field col s12 m4" style="padding-left: 0;margin-top: 0;">
+				  <div class="input-field col s6 m4">                 
+					<label>Age</label>
+						<input type="text" id="age" readonly />
+				  </div>
+				  <div class="input-field col s6 m4">                 
+					<label>Gender </label>
+						<input type="text" id="user_gender"  readonly />
+				  </div>
+              </div>
+			    <div class="input-field col s12 m4">                 
+                <label>BloodGroup </label>
+				 <input type="text" id="user_blood_group" readonly />
+              </div>
+			   <div class="input-field col s12 m4">     
+                <label for="mobile">Mobile No <span class='red-asterisk'>*</span></label>  
+            <!--     <input type="text" id="mblprefix" readonly>-->
+                <input id="user_mobile" name="user_mobile" oninput="if(value.length>10)value=value.slice(0,10)" type="tel" onkeypress="return isNumberKey(event)" />		
+            <!--    <input type="text" id="mobile">                    -->
+              </div> 
+			  <div class="input-field col s12 m4">     
+                <label for="email">Email </label>              
+                <input type="text" id="user_email" name="user_email">                    
+              </div>                           
+			  <div class="input-field col s12 m4" style="padding-left: 0;margin-top: 0;">
+				  <div class="input-field col s6 m4">
+					<label>Weight </label>
+					<input type="text" id="user_weight" name="user_weight"/>				
+				  </div>
+				  <div class="input-field col s6 m4">
+					<label>Height </label>
+					<input type="text" id="user_height" name="user_height"/>				
+				  </div>
+			  </div>
+			   <div class="input-field col s12 m4">     
+                <label>Occupation<span class='red-asterisk'>*</span></label>              
+                <input  id="user_occupation" name="user_occupation" >                    
+              </div>
+			   <div class="input-field col s12 m4">
+                <label>Allergies </label>
+				<textarea id="user_allergies" name="user_allergies"></textarea>				
+			  </div>
+			   <div class="input-field col s12 m4">
+                <label>Medical History </label>
+				<textarea id="user_medical_history" name="user_medical_history"></textarea>				
+			  </div>
+			  <div class="input-field col s12 m4">
+                <label>Surgical History </label>
+				<textarea id="user_surgical_history" name="user_surgical_history"></textarea>				
+			  </div>
+			  
+             			  
+              <div class="input-field col s12 m12" style="margin-bottom: 1rem;"> 
+			  <a onmousedown="ValidateForm();"  class="col s12 m12 waves-effect waves-light btn modal-trigger btn-block">Save Record</a>
+			  </div>
+            </div>
+			</form>
+    </div>	
+
+   
+   	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>	 
+    <script type="text/javascript" src="js/materialize.js"></script>
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="js/Login.js"></script>
+	<script type="text/javascript" src="js/Logout.js"></script>
+	<script type="text/javascript" src="js/DemographicDetails.js"></script>
+	 
+    <script> 
+	
+		
+	var loginname = localStorage.getItem('user_name');
+    $('#loginname').text(loginname);
+        // Initialize collapse button
+
+        $('.brand-logo').sideNav({
+            menuWidth: 300, // Default is 300
+            edge: 'left', // Choose the horizontal origin
+            closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            draggable: true, // Choose whether you can drag to open on touch screens,
+            onOpen: function (el) { /* Do Stuff */ }, // A function to be called when sideNav is opened
+            onClose: function (el) { /* Do Stuff */ }, // A function to be called when sideNav is closed
+        }
+        );
+		
+   	
+	 
+		
+    </script>  
+</body> 	
+</html>

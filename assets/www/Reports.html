@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+
+<head>  
+    <link href="fonts/material-icons/iconfont/material-icons.css" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="js/Login.js"></script>
+	 <script type="text/javascript" src="js/Logout.js"></script>
+	 
+	  <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.js"></script>
+<style>
+.h6, h6 {
+    font-size: 16px;
+}
+.table-striped tr{
+	    border-bottom: 1px solid #ccc;
+}
+</style>
+</head>
+
+<body onload="showList();" >
+ <ul id="slide-out" class="side-nav">
+        <li>
+            <div class="user-view">
+                <div class="background">
+
+                </div>
+                <a href="#!user">
+                    <img class="circle" src="images/yuna.jpg">
+                </a>
+                <a href="#!name">
+                    <span id="loginname" class="white-text name">Username</span>
+                </a>
+                
+            </div>
+        </li>
+        <li >
+            <a class="waves-effect" href="Menu.html">
+                <i class="material-icons">dashboard</i>Dashboard</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>   
+	
+		<li>
+            <a class="waves-effect" href="DemographicDetails.html">
+                <i class="material-icons">group</i>Demographic Details</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>        
+		
+	 
+		<li>
+            <a class="waves-effect"  href="DoctorList.html">
+                <i class="material-icons">person</i>Consulting Doctors</a>
+        </li>
+		 <li>
+            <div class="divider"></div>
+        </li> 
+         <li>
+            <a class="waves-effect" href="AddDocVisit.html">
+                <i class="material-icons">add_box</i>Add Doctor Visit</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+		<li>
+            <a class="waves-effect" href="VisitList.html">
+                <i class="material-icons">file_upload</i>Upload Reports</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>
+		
+		<li class="activated">
+            <a class="waves-effect" href="Reports.html">
+                <i class="material-icons">assignment_turned_in</i>View Reports</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>
+		<li>
+            <a class="waves-effect" href="InsuranceList.html">
+                <i class="material-icons">description</i>Health Insurance</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+		
+		<li>
+            <a class="waves-effect" href="AddEmergencyNoList.html">
+                <i class="material-icons">call</i>Emergency Call</a>
+        </li>	
+		<li>
+            <div class="divider"></div>
+        </li>
+		
+		<li>
+            <a class="waves-effect" href="Setting.html">
+                <i class="material-icons">settings</i>Setting</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+        <li>
+            <a class="waves-effect" onClick="logout();">
+                <i class="material-icons">power_settings_new</i>Logout</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+    </ul>
+
+   
+	<nav class="nav-extended">
+        <div class="nav-wrapper">
+            <a href="#!" class="left brand-logo waves-effect" data-activates="slide-out">
+                <i class="material-icons menu">menu</i>
+            </a>
+            <span class="screen-title" sytyel="    margin-left: 5rem;
+    font-size: 2rem;">View Reports</span>
+			<a href="Notification.html" class="noti"><i class="material-icons">notifications</i></a>
+        </div>
+    </nav>
+	
+
+    <div class="row" style="margin: 15px;">
+	
+	
+			
+     <div class="row">		
+			<table name="mynumbers" class='table-striped' > 
+			<thead id="eno">
+			<tr>
+				<th >Name</th>
+				<th >Report</th>    
+			</tr>
+			</thead>
+			<tbody id="mynumbers" class="well-lg"></tbody>
+			</table>
+			
+		</div>
+	
+
+    </div>
+     <div id="modal1" class="modal">
+                    <div class="modal-content">
+					<a id="close" class="waves-effect waves-light modal-close" style="float:right;color:#000;"><i class="material-icons menu">close</i></a>
+                        <div class="input-field col s12 m12">
+                            <img id="display_img" style="width: 100%;"/>
+                        </div>
+                        <div id="panelID"></div>
+                    </div>
+                </div>
+   
+    
+    <script>
+	
+	$('.modal').modal();
+
+        // Initialize collapse button
+
+        $('.brand-logo').sideNav({
+            menuWidth: 300, // Default is 300
+            edge: 'left', // Choose the horizontal origin
+            closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            draggable: true, // Choose whether you can drag to open on touch screens,
+            onOpen: function (el) { /* Do Stuff */ }, // A function to be called when sideNav is opened
+            onClose: function (el) { /* Do Stuff */ }, // A function to be called when sideNav is closed
+        }
+        );
+
+	   $("#btnAddInsurance").click(function () {	
+	   
+	       //    localStorage.setItem('flag','0');
+		      // window.location.href="AddInsuranceDetails.html";
+			  GetDataForCancellation(0);
+        });
+		
+		
+	  
+	  var loginname = localStorage.getItem('user_name');
+	  var User_id = localStorage.getItem('u_id');
+	
+         $('#loginname').text(loginname);
+		 
+		function showList(){
+		
+				
+				$.ajax({
+
+				type: "POST",
+				url: "https://www.manoramahealthcare.com/health_record_organizer/report_list.php",
+				data : 'user_id=' + User_id, 
+				success: function (msg)
+				{
+				
+				 var responce = JSON.parse(msg);
+				
+				 var Resourcetable = responce.message;
+				 if(responce.result==false){
+				
+				  $("#mynumbers").append("<span class='norecord'>No Records</span>");  
+				  
+				  return false;
+				}
+				
+				
+				 for(var i =0;i < Resourcetable.length;i++)
+				 {
+				   console.log(Resourcetable[i].insurance_id);
+				//   bindList(Resourcetable[i].visit_report_name,Resourcetable[i].visit_report_id,Resourcetable[i].visit_report_created_at,Resourcetable[i].visit_report_image);
+				  $("#mynumbers").append('<tr><td ><span style="font-size: 14px;font-weight: 600;">'+ Resourcetable[i].visit_report_name+"</span><br> "+Resourcetable[i].visit_report_created_at+'</td><td ><a onclick="showimg(\''+ Resourcetable[i].visit_report_image+'\');" ><img src="images/img.png" style="height: 50px;width: 50px;"></a></td></tr>');
+				 
+				 }
+				 
+				 
+				 },
+				error		: function(response)
+							  {   
+									console.log(response);                         
+							  }
+				
+				});
+		}
+				
+		
+		
+		function showimg(imgpath){
+		var img = $(this).attr('data-img');
+			
+			$('#display_img').attr('src','');
+			$('#display_img').attr('src',imgpath);		
+			$("#modal1").modal('open');
+		}
+   
+function GetDataForCancellation(insurance_id) {
+
+  window.location.href = 'AddinsuranceDetails.html?id='+insurance_id;
+}
+
+
+
+
+
+
+
+
+		
+	   function onLoad()
+     {
+        document.addEventListener("deviceready", onDeviceReady, false);
+     }
+     function onDeviceReady() 
+     {
+      document.addEventListener("backbutton", onBackKeyDown, false);
+     }
+     function onBackKeyDown()
+     {
+         window.location.href = 'Menu.html';
+    }
+	
+    </script>
+	
+	   
+       
+	
+	
+</body>
+
+</html>

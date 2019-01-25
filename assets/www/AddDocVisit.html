@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>     
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+    <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>	 
+    <script type="text/javascript" src="js/materialize.js"></script>
+	 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+	 <script type="text/javascript" src="js/Login.js"></script>
+	 <script type="text/javascript" src="js/Logout.js"></script>
+	<script type="text/javascript" src="js/AddDocVisit.js"></script>
+    <style>       
+        .t-scroller {
+            width: 100%;
+            overflow: auto;
+            max-height: 55vh;
+        }
+        .card{
+            margin-bottom: 0px !important;
+        }
+		input{
+		  width:95%!important;
+		  padding: 5px!important;
+		  border-radius: 2px!important;
+
+		}
+		
+		.picker--opened .picker__frame {
+			top: 10px;
+		}
+		.red-asterisk{
+		 color:red;
+		}
+    </style>
+</head> 
+<body> 
+<ul id="slide-out" class="side-nav">
+        <li>
+            <div class="user-view">
+                <div class="background">
+
+                </div>
+                <a href="#!user">
+                    <img class="circle" src="images/yuna.jpg">
+                </a>
+                <a href="#!name">
+                    <span id="loginname" class="white-text name">Username</span>
+                </a>
+                
+            </div>
+        </li>
+        <li >
+            <a class="waves-effect" href="Menu.html">
+                <i class="material-icons">dashboard</i>Dashboard</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>   
+	
+		<li>
+            <a class="waves-effect" href="DemographicDetails.html">
+                <i class="material-icons">group</i>Demographic Details</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>         
+		<li >
+            <a class="waves-effect"  href="DoctorList.html">
+                <i class="material-icons">person</i>Consulting Doctors</a>
+        </li>
+		 <li>
+            <div class="divider"></div>
+        </li> 
+         <li class="activated">
+            <a class="waves-effect" href="AddDocVisit.html">
+                <i class="material-icons">add_box</i>Add Doctor Visit</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+		<li>
+            <a class="waves-effect" href="VisitList.html">
+                <i class="material-icons">file_upload</i>Upload Reports</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>
+		
+		<li>
+            <a class="waves-effect" href="Reports.html">
+                <i class="material-icons">assignment_turned_in</i>View Reports</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>
+		<li>
+            <a class="waves-effect" href="InsuranceList.html">
+                <i class="material-icons">description</i>Health Insurance</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+		
+		<li>
+            <a class="waves-effect" href="AddEmergencyNoList.html">
+                <i class="material-icons">call</i>Emergency Call</a>
+        </li>	
+		<li>
+            <div class="divider"></div>
+        </li>
+		
+		<li>
+            <a class="waves-effect" href="Setting.html">
+                <i class="material-icons">settings</i>Setting</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+        <li>
+            <a class="waves-effect" onClick="logout();">
+                <i class="material-icons">power_settings_new</i>Logout</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+    </ul>
+<nav class="nav-extended">
+        <div class="nav-wrapper">
+            <a href="#!" class="left brand-logo waves-effect" data-activates="slide-out">
+                <i class="material-icons menu">menu</i>
+            </a>
+            <span class="screen-title">Add Doctor Visit</span>
+			<a href="Notification.html" class="noti"><i class="material-icons">notifications</i></a>
+        </div>
+    </nav>
+	
+    
+	
+    <div class="row" style="overflow: auto; height: 90vh; margin-bottom:0px;">
+        <form id="doctor-form" name="doctor-form" method="post" enctype="multipart/form-data">                
+            <div class="col s12 m12">     
+              <div class="input-field col s12 m4">
+				<label>Select Doctor <span class='red-asterisk'>*</span></label>
+				<select id="visit_doctor_id" class="btnEmp" name="visit_doctor_id">
+										 			
+				</select>  			
+			  </div>	
+			<div class="input-field col s12 m4">     
+                <label for="dob">Select Date<span class='red-asterisk'>*</span></label>              
+                <input type="date" class="datepicker" id="visit_datetime" name="visit_datetime" placeholder="mm/dd/yyyy" >                    
+              </div>
+			               
+			   <div class="input-field col s12 m4">
+                <label>Diagnosis Details <span class='red-asterisk'>*</span></label>
+				<textarea id="visit_diagnosis_details" name="visit_diagnosis_details"></textarea>				
+			  </div>
+				<div class="input-field col s12 m4">
+                <label>Medication <span class='red-asterisk'>*</span></label>
+				<textarea id="visit_medication" name="visit_medication"></textarea>				
+			  </div>
+			  
+				<div class="input-field col s12 m4">
+                <label>Prescription <span class='red-asterisk'>*</span></label>
+							
+			<div class="input-field col s12 m12" style="margin-bottom: 1rem;">
+				<div class="file-upload">
+				  <div class="file-select">
+					<div class="file-select-button" id="fileName">Choose File</div>
+					<div class="file-select-name" id="noFile">No file chosen...</div>  
+					<input type="file" id="file" name="upload_prescription[]" value="Upload" class="col s12 m12 chooseFile"/>
+					
+				  </div>
+				</div>
+			</div>
+			
+			  </div> 
+			  <!--<div class="input-field col s12 m4">
+                <label>Lab Reports </label>
+							<div class="row">	
+			<div class="input-field col s12 m12" style="margin-bottom: 1rem;">
+				<input type="file" id="file1" name="upload_report[]"  value="Upload" class="col s12 m12 btn btn-block" multiple />
+			</div>
+			</div>
+			  </div>--> 
+			  <div class="input-field col s12 m4">     
+                <label for="dob">Follow-up Visit Date<span class='red-asterisk'>*</span></label>              
+                <input type="date" class="datepicker" id="visit_followup_date" name="visit_followup_date" placeholder="mm/dd/yyyy" >                    
+              </div>
+			  
+			  	
+              	<input type="hidden" name="user_id" id="u_id">
+				
+							
+              <div class="input-field col s12 m12" style="margin-bottom: 1rem;"> 
+			<!--	<a onClick="regUser();" class="col s12 m12 waves-effect waves-light btn btn-block">Submit</a>-->
+			
+            <a onmousedown="DoctorVisitForm();" id="save" class="col s12 m12 waves-effect waves-light btn modal-trigger btn-block">Save Visit</a>
+			
+			  </div>
+            </div>
+			</form>
+			<img id="loading_img" style="width: 20%;text-align: center;position: absolute;top: 24%;left: 40%;z-index: 1;display:none;" src="images/uploading.gif" >
+    </div>	
+
+</body>    
+   	       
+    <script type="text/javascript" charset="utf-8"> 
+    
+	
+	var loginname = localStorage.getItem('user_name');
+    $('#loginname').text(loginname);	
+	 // var address = localStorage.getItem('address');
+var u_id =  localStorage.getItem('u_id');
+//var doc_id =  localStorage.getItem('doc_id');
+$("#u_id").val(u_id);
+//$("#doc_id").val(doc_id);
+
+		$(function() {
+		  // Handler for .ready() called.
+		 
+		  $("#user_username").keyup(function() {
+				var $th = $(this);
+				$th.val( $th.val().replace(/[^a-zA-Z0-9._]/g, function(str) { return ''; } ) );	
+			});
+			
+			$("#user_name").keyup(function() {
+				var $th = $(this);
+				$th.val( $th.val().replace(/[^a-zA-Z]/g, function(str) { return ''; } ) );	
+			});
+			
+			
+			$('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 70, // Creates a dropdown of 15 years to control year,
+            today: 'Today',
+            clear: 'Clear',
+            close: 'Ok',
+			format:"mm/dd/yyyy",
+            closeOnSelect: false			// Close upon selecting a date,			
+		});
+			viewdoc();
+
+		});
+	  
+	 $('.brand-logo').sideNav({
+            menuWidth: 300, // Default is 300
+            edge: 'left', // Choose the horizontal origin
+            closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            draggable: true, // Choose whether you can drag to open on touch screens,
+            onOpen: function (el) { /* Do Stuff */ }, // A function to be called when sideNav is opened
+            onClose: function (el) { /* Do Stuff */ }, // A function to be called when sideNav is closed
+        }
+        );
+		
+		$('.chooseFile').bind('change', function () {
+	  var filename = $(".chooseFile").val();
+	  if (/^\s*$/.test(filename)) {
+		$(".file-upload").removeClass('active');
+		$("#noFile").text("No file chosen..."); 
+	  }
+	  else {
+		$(".file-upload").addClass('active');
+		$("#noFile").text(filename.replace("C:\\fakepath\\", "")); 
+	  }
+	});
+		
+    </script>     
+</html>

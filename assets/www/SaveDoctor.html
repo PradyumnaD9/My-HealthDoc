@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>     
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+    <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>	 
+    <script type="text/javascript" src="js/materialize.js"></script>
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="js/Login.js"></script>
+	 <script type="text/javascript" src="js/Logout.js"></script>
+	 <script type="text/javascript" src="js/Doctor.js"></script>
+    <style>
+         
+
+        .t-scroller {
+            width: 100%;
+            overflow: auto;
+            max-height: 55vh;
+        }
+        .card{
+            margin-bottom: 0px !important;
+        }
+		input{
+		  width:95%!important;
+		  padding: 5px!important;
+		  border-radius: 2px!important;
+
+		}
+		.picker--opened .picker__frame {
+			top: 10px;
+		}
+		.red-asterisk{
+		 color:red;
+		}
+    </style>
+</head> 
+<body>    
+<ul id="slide-out" class="side-nav">
+        <li>
+            <div class="user-view">
+                <div class="background">
+
+                </div>
+                <a href="#!user">
+                    <img class="circle" src="images/yuna.jpg">
+                </a>
+                <a href="#!name">
+                    <span id="loginname" class="white-text name">Username</span>
+                </a>
+                
+            </div>
+        </li>
+        <li >
+            <a class="waves-effect" href="Menu.html">
+                <i class="material-icons">dashboard</i>Dashboard</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>   
+	
+		<li>
+            <a class="waves-effect" href="DemographicDetails.html">
+                <i class="material-icons">group</i>Demographic Details</a>
+        </li>
+		
+		 <li>
+            <div class="divider"></div>
+        </li> 
+         <li>
+            <a class="waves-effect" href="AddDocVisit.html">
+                <i class="material-icons">add_box</i>Add Visits</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>        
+		
+	 
+		 <li class="activated">
+            <a class="waves-effect"  href="DoctorList.html">
+                <i class="material-icons">person</i>Consulting Doctors</a>
+        </li>
+		 <li>
+            <div class="divider"></div>
+        </li> 
+         <li>
+            <a class="waves-effect" href="AddDocVisit.html">
+                <i class="material-icons">add_box</i>Add Doctor Visit</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+		<li>
+            <a class="waves-effect" href="VisitList.html">
+                <i class="material-icons">file_upload</i>Upload Reports</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>
+		
+		<li>
+            <a class="waves-effect" href="Reports.html">
+                <i class="material-icons">assignment_turned_in</i>View Reports</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>
+		<li>
+            <a class="waves-effect" href="InsuranceList.html">
+                <i class="material-icons">description</i>Health Insurance</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+		
+		<li>
+            <a class="waves-effect" href="AddEmergencyNoList.html">
+                <i class="material-icons">call</i>Emergency Call</a>
+        </li>	
+		<li>
+            <div class="divider"></div>
+        </li>
+		
+		<li>
+            <a class="waves-effect" href="Setting.html">
+                <i class="material-icons">settings</i>Setting</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+        <li>
+            <a class="waves-effect" onClick="logout();">
+                <i class="material-icons">power_settings_new</i>Logout</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+    </ul>
+
+	
+	
+	<nav class="nav-extended">
+        <div class="nav-wrapper">
+            <a href="#!" class="left brand-logo waves-effect" data-activates="slide-out">
+                <i class="material-icons menu">menu</i>
+            </a>
+            <span class="screen-title">Add Consulting Doctor</span>
+			<a href="Notification.html" class="noti"><i class="material-icons">notifications</i></a>
+        </div>
+    </nav>
+	
+    <div class="row" style="overflow: auto; height: 90vh; margin-bottom:0px;">
+        <form id="doctor-form" name="doctor-form">                
+            <div class="col s12 m12">     
+              <div class="input-field col s12 m4">
+				<label>Doctor Name <span class='red-asterisk'>*</span></label>
+				<input type="text" id="consulting_doctor_name" name="consulting_doctor_name"/>				
+			  </div>	
+			<div class="input-field col s12 m4">
+				<label>Hospital Name <span class='red-asterisk'>*</span></label>
+				<input type="text" id="consulting_doctor_hospital_name" name="consulting_doctor_hospital_name"/>				
+			  </div>	
+				<div class="input-field col s12 m4">     
+                <label for="mobile">Enter Phone </label>  
+                <input id="consulting_doctor_phone" name="consulting_doctor_phone" oninput="if(value.length>14)value=value.slice(0,14)" type="tel" onkeypress="return isNumberKey(event)" />		
+              </div> 			  
+			   <div class="input-field col s12 m4">     
+                <label for="mobile">Enter Mobile <span class='red-asterisk'>*</span></label>  
+                <input id="consulting_doctor_mobile" name="consulting_doctor_mobile" oninput="if(value.length>10)value=value.slice(0,10)" type="tel" onkeypress="return isNumberKey(event)" />		
+              </div> 
+			  <div class="input-field col s12 m4">     
+                <label for="email">Enter Email </label>              
+                <input type="text" id="consulting_doctor_email" name="consulting_doctor_email">                    
+              </div>                           
+			  <div class="input-field col s12 m4">
+                <label>Speciality <span class='red-asterisk'>*</span></label>
+				 <input id="consulting_doctor_specialty" name="consulting_doctor_specialty" type="text" />				
+			  </div> 
+				<div class="input-field col s12 m4">
+                <label>Address <span class='red-asterisk'>*</span></label>
+				 <input id="consulting_doctor_address" name="consulting_doctor_address" type="text" />				
+			  </div> 			  
+              	<input type="hidden" name="consulting_doctor_user_id" id="u_id">
+				<input type="hidden" name="consulting_doctor_id" id="doc_id">				
+              <div class="input-field col s12 m12" style="margin-bottom: 1rem;"> 
+			<!--	<a onClick="regUser();" class="col s12 m12 waves-effect waves-light btn btn-block">Submit</a>-->
+			
+            <a onmousedown="DoctorForm();" id="save" class="col s12 m12 waves-effect waves-light btn modal-trigger btn-block">Save</a>
+			<a onmousedown="UpDoctorForm();" style="display:none" id="up" class="col s12 m12 waves-effect waves-light btn modal-trigger btn-block">Update</a>
+			  </div>
+            </div>
+			</form>
+    </div>	
+
+</body>    
+   	       
+    <script> 
+      
+	 // var address = localStorage.getItem('address');
+	 	
+	var loginname = localStorage.getItem('user_name');
+    $('#loginname').text(loginname);
+var u_id =  localStorage.getItem('u_id');
+var doc_id =  localStorage.getItem('doc_id');
+var flg_id =  localStorage.getItem('flgup');
+$("#u_id").val(u_id);
+$("#doc_id").val(doc_id);
+$(".screen-title").html('Add Consulting Doctor');
+
+		$(function() {
+		  // Handler for .ready() called.
+		 
+		  $("#user_username").keyup(function() {
+				var $th = $(this);
+				$th.val( $th.val().replace(/[^a-zA-Z0-9._]/g, function(str) { return ''; } ) );	
+			});
+			
+			$("#user_name").keyup(function() {
+				var $th = $(this);
+				$th.val( $th.val().replace(/[^a-zA-Z]/g, function(str) { return ''; } ) );	
+			});
+			if(flg_id==0){
+			viewdoc();
+			}else{
+			}
+			
+			
+		});
+		function isNumberKey(evt) {
+	 
+            var charCode = (evt.which) ? evt.which : event.keyCode;
+            if (charCode != 46 && charCode > 31
+                && (charCode < 48 || charCode > 57)) {
+
+                $("label#ph_error").show();
+                $("input#mobile").focus();
+
+                return false;
+            }
+            $("label#ph_error").hide();
+
+            return true;
+        }
+	  // Initialize collapse button
+
+        $('.brand-logo').sideNav({
+            menuWidth: 300, // Default is 300
+            edge: 'left', // Choose the horizontal origin
+            closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            draggable: true, // Choose whether you can drag to open on touch screens,
+            onOpen: function (el) { /* Do Stuff */ }, // A function to be called when sideNav is opened
+            onClose: function (el) { /* Do Stuff */ }, // A function to be called when sideNav is closed
+        }
+        );
+    </script>     
+</html>
