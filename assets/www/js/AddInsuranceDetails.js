@@ -9,6 +9,7 @@ var flag = localStorage.getItem('flag');
 
 
 
+
 $(document).ready(function () {
 
   $("#addinsurance").hide();
