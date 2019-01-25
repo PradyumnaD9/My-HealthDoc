@@ -92,14 +92,7 @@ function AddInsuranceDetails(){
 				},500)
                 return false;
             }
-			else if (insurance_department == "") {
-                alert("Please Enter Selected Departments")
-				setTimeout(function(){
-                $("#insurance_department").focus();
-				},500)
-                return false;
-            }
-		else{
+			else{
 			
 		
 				var data = $("#Insurance-form").serialize();

@@ -105,6 +105,7 @@ option += '<option value="'+ parseJson.message[i].consulting_doctor_id + '"data-
 				  
 				  alert("Visit Saved Successfully!!!");
 				  $('#loading_img').css('display','none');
+				  window.location.href="VisitList.html";
 				ResetForm();	
 			  }
 	 });	
