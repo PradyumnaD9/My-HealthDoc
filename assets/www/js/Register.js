@@ -121,12 +121,14 @@ var address = localStorage.getItem('address');
               data: data,		    
               success: function(data) {
 				  console.log(data);
+				  alert("User Registered Successfully!!!");	
+					window.location.href="Login.html";				  
+				  ResetForm();	
 			  }
 	 });	
-				alert("User Registered Successfully!!!");
-				window.location.href="Login.html";
-				ResetForm();	
+				
 			}
+			
     }
 	
 	function ValidateEmail(email) {

@@ -35,11 +35,10 @@ console.log(user_id);
 					$("#user_height").val(responce.message.user_height);
 					$("#user_occupation").val(responce.message.user_occupation);
 					$("#user_allergies").val(responce.message.user_allergies);
-					$("#user_medical_history").val(responce.message.user_medical_history);
-					
+					$("#user_medical_history").val(responce.message.user_medical_history);					
 					$("#user_age").val(responce.message.user_age);
 					
-					
+					//alert(responce.message.user_age);
 				  
 				  
 			  },

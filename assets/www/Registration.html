@@ -5,8 +5,9 @@
     <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />  
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>	 
-    <script type="text/javascript" src="js/materialize.js"></script>
-	 <script type="text/javascript" src="js/Register.js"></script>
+	<script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/materialize.js"></script>	
+	<script type="text/javascript" src="js/Register.js"></script>
     <style>
          
 
@@ -160,7 +161,7 @@
 			dob = new Date(bdate);
 			var today = new Date();
 			var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
-			$('#user_age').val(age+' years old');
+			$('#user_age').val(age);
 			//alert(age);
 		}		
 		
