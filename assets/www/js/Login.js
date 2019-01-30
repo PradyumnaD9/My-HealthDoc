@@ -23,8 +23,9 @@ function handleLogin()
 	
 	 if(unm == '')
     {	
-        	$("#user_username").css("border","1px solid red");
-			return false;
+		alert("Enter Username");
+        $("#user_username").css("border","1px solid red");
+		return false;
     }
 	
 	else{
@@ -32,7 +33,7 @@ function handleLogin()
 	}
      if(psd == '')
     {    
-    	//alert("Enter Password");
+    	alert("Enter Password");
     	$("#user_password").css("border","1px solid red");
     	return false;
     } 
@@ -63,7 +64,7 @@ console.log(parseJson.message);
 if(parseJson.message == "user or password incorrect"){
 	$("#user_password").css("border","1px solid red");
 	$("#user_username").css("border","1px solid red");
-	alert("email or password is incorrect. Try again.")
+	alert("Incorrect username or password. Try again.")
 	
 }
 else{

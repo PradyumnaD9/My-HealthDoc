@@ -28,7 +28,7 @@ span.screen-title {
 </style>
 </head>
 
-<body onload="showList();" >
+<body onload="showList();onLoad();" >
  <ul id="slide-out" class="side-nav">
         <li>
             <div class="user-view">
@@ -170,7 +170,7 @@ span.screen-title {
 	   $("#btnAddInsurance").click(function () {	
 	   
 	          localStorage.setItem('flag',1);
-		       window.location.href="AddInsuranceDetails.html";
+		      window.location.href="AddInsuranceDetails.html";
 			  //GetDataForCancellation();
         });
 		
@@ -259,26 +259,15 @@ localStorage.setItem("insurance_id",insurance_id);
 localStorage.setItem("flag",flg);
   window.location.href = 'AddInsuranceDetails.html';
 }
-
-
-
-
-
-
-
-
 		
-	   function onLoad()
+	 function onLoad()
      {
-        document.addEventListener("deviceready", onDeviceReady, false);
+        document.addEventListener("backbutton", onBackKeyDown, false);
      }
-     function onDeviceReady() 
-     {
-      document.addEventListener("backbutton", onBackKeyDown, false);
-     }
+     
      function onBackKeyDown()
      {
-       //navigator.app.exitApp()
+       window.location.href="Menu.html";
     }
 	
     </script>

@@ -36,7 +36,7 @@
 		}
     </style>
 </head> 
-<body onload="findNumber();">     
+<body onload="findNumber();onLoad();">     
 <ul id="slide-out" class="side-nav">
         <li>
             <div class="user-view">
@@ -325,6 +325,16 @@ function dial(number){
 	 });
 	 
 	}
+	
+	 function onLoad()
+     {
+        document.addEventListener("backbutton", onBackKeyDown, false);
+     }
+     
+     function onBackKeyDown()
+     {
+       window.location.href="Menu.html";
+    }
 	
     </script>  
 </body> 	

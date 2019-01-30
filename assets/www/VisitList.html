@@ -68,7 +68,7 @@
 	}
     </style>
   </head>
-  <body>
+  <body onload="onLoad();">
   
     <ul id="slide-out" class="side-nav">
         <li>
@@ -282,5 +282,14 @@ function addvisit(){
 window.location.href="AddDocVisit.html";
 }
 
+ function onLoad()
+     {
+        document.addEventListener("backbutton", onBackKeyDown, false);
+     }
+     
+     function onBackKeyDown()
+     {
+       window.location.href="Menu.html";
+    }
 </script>
 </html>

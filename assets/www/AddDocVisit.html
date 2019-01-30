@@ -34,7 +34,7 @@
 		}
     </style>
 </head> 
-<body> 
+<body onload="onLoad();"> 
 <ul id="slide-out" class="side-nav">
         <li>
             <div class="user-view">
@@ -264,6 +264,16 @@ $("#u_id").val(u_id);
 		$("#noFile").text(filename.replace("C:\\fakepath\\", "")); 
 	  }
 	});
+	
+	 function onLoad()
+     {
+        document.addEventListener("backbutton", onBackKeyDown, false);
+     }
+     
+     function onBackKeyDown()
+     {
+       window.location.href="Menu.html";
+    }
 		
     </script>     
 </html>

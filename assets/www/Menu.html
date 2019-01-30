@@ -30,7 +30,7 @@ body{
 </style>
 </head>
 
-<body >
+<body onload="onLoad();">
  <ul id="slide-out" class="side-nav">
         <li>
             <div class="user-view">
@@ -268,15 +268,20 @@ body{
 	 
 	   function onLoad()
      {
-        document.addEventListener("deviceready", onDeviceReady, false);
-     }
-     function onDeviceReady() 
-     {
-      document.addEventListener("backbutton", onBackKeyDown, false);
+        document.addEventListener("backbutton", onBackKeyDown, false);
      }
      function onBackKeyDown()
-     {
-       navigator.app.exitApp()
+    {
+ 
+		var r = confirm("Do You Want To Exit App?");
+		if (r == true) {
+			//x = "You pressed OK!";
+			 navigator.app.exitApp();
+			} 
+			else{
+			
+			}  
+
     }
 	
     var loginname = localStorage.getItem('user_name');

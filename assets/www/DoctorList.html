@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-	<script type="text/javascript" charset="utf-8" src="js/camera.js"></script>	
+	<!--<script type="text/javascript" charset="utf-8" src="js/camera.js"></script>	-->
 	<script type="text/javascript" src="js/materialize.js"></script>
 	<script type="text/javascript" src="js/Login.js"></script>
 	<script type="text/javascript" src="js/Logout.js"></script>
@@ -70,7 +70,7 @@ span.screen-title {
     text-align: center; }
     </style>
   </head>
-  <body>
+  <body onload="onLoad();">
   
   <ul id="slide-out" class="side-nav">
         <li>
@@ -301,5 +301,14 @@ function dial(number){
   window.plugins.CallNumber.callNumber(onSuccess, onError, number, false);
 }
  
+  function onLoad()
+     {
+        document.addEventListener("backbutton", onBackKeyDown, false);
+     }
+     
+     function onBackKeyDown()
+     {
+       window.location.href="Menu.html";
+    }
 </script>
 </html>

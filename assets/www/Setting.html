@@ -21,7 +21,7 @@
 </style>
 </head>
 
-<body >
+<body onload="onLoad();">
  <ul id="slide-out" class="side-nav">
         <li>
             <div class="user-view">
@@ -171,22 +171,14 @@
         }
         );
 
-	
-
-      
-	 
-	 
-	   function onLoad()
+	 function onLoad()
      {
-        document.addEventListener("deviceready", onDeviceReady, false);
+        document.addEventListener("backbutton", onBackKeyDown, false);
      }
-     function onDeviceReady() 
-     {
-      document.addEventListener("backbutton", onBackKeyDown, false);
-     }
+     
      function onBackKeyDown()
      {
-        window.location.href = 'Menu.html';
+       window.location.href="Menu.html";
     }
 	
     </script>

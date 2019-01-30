@@ -26,7 +26,7 @@ $(document).ready(function () {
 else if(flag == 1){
 	$("#addinsurance").show();
 	$("#updateinsurance").hide();
-	AddInsuranceDetails();
+	//AddInsuranceDetails();
 }
 
   
@@ -36,8 +36,7 @@ else if(flag == 1){
 
 function AddInsuranceDetails(){
 		
-		document.getElementById("user_id").value = user_id;
-		
+		document.getElementById("user_id").value = user_id;		
 		var insurance_company = $("#insurance_company").val();
 		var insurance_scheme = $("#insurance_scheme").val();
 		var insurance_premium = $("#insurance_premium").val()
