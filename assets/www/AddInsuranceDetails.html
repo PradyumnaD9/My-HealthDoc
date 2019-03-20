@@ -8,32 +8,6 @@
     <link type="text/css" rel="stylesheet" href="css/style.css" />	
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />	
 	
-    <style>        
-
-        .t-scroller {
-            width: 100%;
-            overflow: auto;
-            max-height: 55vh;
-        }
-        .card{
-            margin-bottom: 0px !important;
-        }
-		input{
-		  width:95%!important;
-		  padding: 5px!important;
-		  border-radius: 2px!important;
-
-		}
-		span.screen-title {
-			    margin-left: 4rem!important;		 
-		}
-		.picker--opened .picker__frame {
-			top: 10px;
-		}
-		.red-asterisk{
-		 color:red;
-		}
-    </style>
 </head> 
 <body>     
 <ul id="slide-out" class="side-nav">
@@ -110,10 +84,23 @@
 		<li>
             <div class="divider"></div>
         </li>
-		
+		<li>
+            <a class="waves-effect" onClick="share();">
+                <i class="material-icons">share</i>Share App</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>
 		<li>
             <a class="waves-effect" href="Setting.html">
                 <i class="material-icons">settings</i>Setting</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+		<li >
+            <a class="waves-effect" href="Feedback.html">
+                <i class="material-icons">feedback</i>Feedback</a>
         </li>
         <li>
             <div class="divider"></div>
@@ -232,7 +219,11 @@
 			format:"mm/dd/yyyy",
             closeOnSelect: false // Close upon selecting a date,	
         });
-   
+   function share()
+	{ 
+	
+	   window.plugins.socialsharing.share("Hey check out our new app My HealthDoc", null, null, "https://play.google.com/store/apps/details?id=com.manorama.healthrecordorganizer")
+    }
 		
     </script>  
 </body> 	

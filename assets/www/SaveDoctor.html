@@ -67,22 +67,13 @@
 		 <li>
             <div class="divider"></div>
         </li> 
-         <li>
-            <a class="waves-effect" href="AddDocVisit.html">
-                <i class="material-icons">add_box</i>Add Visits</a>
-        </li>
-        <li>
-            <div class="divider"></div>
-        </li>        
-		
-	 
 		 <li class="activated">
             <a class="waves-effect"  href="DoctorList.html">
                 <i class="material-icons">person</i>Consulting Doctors</a>
         </li>
 		 <li>
             <div class="divider"></div>
-        </li> 
+        </li>      
          <li>
             <a class="waves-effect" href="AddDocVisit.html">
                 <i class="material-icons">add_box</i>Add Doctor Visit</a>
@@ -120,12 +111,25 @@
 		<li>
             <div class="divider"></div>
         </li>
-		
+		<li>
+            <a class="waves-effect" onClick="share();">
+                <i class="material-icons">share</i>Share App</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>
 		<li>
             <a class="waves-effect" href="Setting.html">
                 <i class="material-icons">settings</i>Setting</a>
         </li>
         <li>
+            <div class="divider"></div>
+        </li>
+		<li >
+            <a class="waves-effect" href="Feedback.html">
+                <i class="material-icons">feedback</i>Feedback</a>
+        </li>
+		 <li>
             <div class="divider"></div>
         </li>
         <li>
@@ -252,5 +256,11 @@ $(".screen-title").html('Add Consulting Doctor');
             onClose: function (el) { /* Do Stuff */ }, // A function to be called when sideNav is closed
         }
         );
+		
+		function share()
+	{ 
+	
+	   window.plugins.socialsharing.share("Hey check out our new app My HealthDoc", null, null, "https://play.google.com/store/apps/details?id=com.manorama.healthrecordorganizer")
+    }
     </script>     
 </html>

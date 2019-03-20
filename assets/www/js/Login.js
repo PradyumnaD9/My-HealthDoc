@@ -10,7 +10,7 @@ localStorage.setItem('address', 'https://www.manoramahealthcare.com/health_recor
 	   var now = new Date();
 	   var day1 = ("0" + now.getDate()+1).slice(-2);
        var month1 = ("0" + (now.getMonth() + 1)).slice(-2);
-       var today1 = "2019/02/20";
+       var today1 = "2022/02/20";
 	
 
 function handleLogin() 

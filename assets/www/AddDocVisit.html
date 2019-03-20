@@ -11,24 +11,7 @@
 	 <script type="text/javascript" src="js/Logout.js"></script>
 	<script type="text/javascript" src="js/AddDocVisit.js"></script>
     <style>       
-        .t-scroller {
-            width: 100%;
-            overflow: auto;
-            max-height: 55vh;
-        }
-        .card{
-            margin-bottom: 0px !important;
-        }
-		input{
-		  width:95%!important;
-		  padding: 5px!important;
-		  border-radius: 2px!important;
-
-		}
-		
-		.picker--opened .picker__frame {
-			top: 10px;
-		}
+     
 		.red-asterisk{
 		 color:red;
 		}
@@ -109,12 +92,25 @@
 		<li>
             <div class="divider"></div>
         </li>
-		
+		<li>
+            <a class="waves-effect" onClick="share();">
+                <i class="material-icons">share</i>Share App</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>
 		<li>
             <a class="waves-effect" href="Setting.html">
                 <i class="material-icons">settings</i>Setting</a>
         </li>
         <li>
+            <div class="divider"></div>
+        </li>	
+		<li >
+            <a class="waves-effect" href="Feedback.html">
+                <i class="material-icons">feedback</i>Feedback</a>
+        </li>
+		 <li>
             <div class="divider"></div>
         </li>
         <li>
@@ -161,7 +157,7 @@
 			  </div>
 			  
 				<div class="input-field col s12 m4">
-                <label>Prescription <span class='red-asterisk'>*</span></label>
+                <label>Prescription <span class='red-asterisk'>*</span>(jpg,jpeg,png,gif)</label>
 							
 			<div class="input-field col s12 m12" style="margin-bottom: 1rem;">
 				<div class="file-upload">
@@ -260,6 +256,7 @@ $("#u_id").val(u_id);
 		$("#noFile").text("No file chosen..."); 
 	  }
 	  else {
+	  if(filename.length > 30) filename = filename.substring(0,30)+'...';  
 		$(".file-upload").addClass('active');
 		$("#noFile").text(filename.replace("C:\\fakepath\\", "")); 
 	  }
@@ -274,6 +271,10 @@ $("#u_id").val(u_id);
      {
        window.location.href="Menu.html";
     }
-		
+		function share()
+	{ 
+	
+	   window.plugins.socialsharing.share("Hey check out our new app My HealthDoc", null, null, "https://play.google.com/store/apps/details?id=com.manorama.healthrecordorganizer")
+    }
     </script>     
 </html>

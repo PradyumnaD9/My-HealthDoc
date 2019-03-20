@@ -30,13 +30,55 @@ console.log(user_id);
 					$("#user_gender").val(responce.message.user_gender)
 					$("#user_blood_group").val(responce.message.user_blood_group);
 					$("#user_mobile").val(responce.message.user_mobile);
-					$("#user_email").val(responce.message.user_email);
-					$("#user_weight").val(responce.message.user_weight);
-					$("#user_height").val(responce.message.user_height);
+					//$("#user_email").val(responce.message.user_email);
+					//$("#user_weight").val(responce.message.user_weight);
+					//$("#user_height").val(responce.message.user_height);
 					$("#user_occupation").val(responce.message.user_occupation);
-					$("#user_allergies").val(responce.message.user_allergies);
-					$("#user_medical_history").val(responce.message.user_medical_history);					
-					$("#user_age").val(responce.message.user_age);
+					//$("#user_allergies").val(responce.message.user_allergies);
+					//	$("#user_medical_history").val(responce.message.user_medical_history);					
+					if(responce.message.user_email == ""){
+						
+						$("#user_email").val('-');
+					}else {
+					$("#user_email").val(responce.message.user_email);	
+					}
+					if(responce.message.user_weight == ""){
+						
+						$("#user_weight").val('-');
+					}else {
+					$("#user_weight").val(responce.message.user_weight);	
+					}
+					if(responce.message.user_height == ""){
+						
+						$("#user_height").val('-');
+					}else {
+					$("#user_height").val(responce.message.user_height);	
+					}
+					if(responce.message.user_allergies == ""){
+						
+						$("#user_allergies").val('-');
+					}else {
+					$("#user_allergies").val(responce.message.user_allergies);	
+					}
+					if(responce.message.user_medical_history == ""){
+						
+						$("#user_medical_history").val('-');
+					}else {
+					$("#user_medical_history").val(responce.message.user_medical_history);	
+					}
+					if(responce.message.user_surgical_history == ""){
+						
+						$("#user_surgical_history").val('-');
+					}else {
+					$("#user_surgical_history").val(responce.message.user_surgical_history);	
+					}
+					if(responce.message.user_age == null){
+						
+						$("#user_age").val('-');
+					}else {
+					$("#user_age").val(responce.message.user_age);	
+					}
+					
 					
 					//alert(responce.message.user_age);
 				  

@@ -7,34 +7,14 @@
     <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />
     <link type="text/css" rel="stylesheet" href="css/style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<style>
+	td, th {
+    padding: 2px 9px;
+    border-right: 1px solid #eee !important;
+}
 	
-    <style>
-         
-
-        .t-scroller {
-            width: 100%;
-            overflow: auto;
-            max-height: 55vh;
-        }
-        .card{
-            margin-bottom: 0px !important;
-        }
-		input{
-		  width:95%!important;
-		  padding: 5px!important;
-		  border-radius: 2px!important;
-
-		}
-		span.screen-title {
-			    margin-left: 4rem!important;		 
-		}
-		.picker--opened .picker__frame {
-			top: 10px;
-		}
-		.red-asterisk{
-		 color:red;
-		}
-    </style>
+	</style>
+  
 </head> 
 <body onload="findNumber();onLoad();">     
 <ul id="slide-out" class="side-nav">
@@ -111,12 +91,25 @@
 		<li>
             <div class="divider"></div>
         </li>
-		
+		<li>
+            <a class="waves-effect" onClick="share();">
+                <i class="material-icons">share</i>Share App</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>
 		<li>
             <a class="waves-effect" href="Setting.html">
                 <i class="material-icons">settings</i>Setting</a>
         </li>
         <li>
+            <div class="divider"></div>
+        </li>
+		<li >
+            <a class="waves-effect" href="Feedback.html">
+                <i class="material-icons">feedback</i>Feedback</a>
+        </li>
+		 <li>
             <div class="divider"></div>
         </li>
         <li>
@@ -136,7 +129,7 @@
             <a href="#!" class="left brand-logo waves-effect" data-activates="slide-out">
                 <i class="material-icons menu">menu</i>
             </a>
-            <span class="screen-title">Emergency Numbers</span>
+            <span class="screen-title">Emergency Call</span>
 			<a href="Notification.html" class="noti"><i class="material-icons">notifications</i></a>
         </div>
     </nav>
@@ -159,8 +152,8 @@
 			<table name="mynumbers" class='table-striped' style="margin-left:5px;margin-right:5px" > 
 			<thead id="eno">
 			<tr>
-				<th width="70%">Number</th>
-				<th width="30%">Call</th>    
+				<th width="60%">Number</th>
+				<th width="40%">Call</th>    
 			</tr>
 			</thead>
 			<tbody id="mynumbers" class="well-lg"></tbody>
@@ -242,7 +235,7 @@
 				
 				for(var i =0;i < parseJson.message.length;i++)
 				{
-			     	$("#mynumbers").append('<tr><td width="70%" >'+ parseJson.message[i].contact_emergency+"<br>"+parseJson.message[i].contact_priority+'</td><td width="30%" class="callno" data-mob="'+parseJson.message[i].contact_emergency+'"><span><i class="Small material-icons callr">phone</i></span></td></tr>');
+			     	$("#mynumbers").append('<tr><td width="60%" >'+ parseJson.message[i].contact_emergency+" - "+parseJson.message[i].contact_priority+'</td><td width="40%" class="callno" data-mob="'+parseJson.message[i].contact_emergency+'"><span><i class="Small material-icons callr">phone</i></span></td></tr>');
 
 				}
 				$(".callno").click(function(){
@@ -335,7 +328,11 @@ function dial(number){
      {
        window.location.href="Menu.html";
     }
+	function share()
+	{ 
 	
+	   window.plugins.socialsharing.share("Hey check out our new app My HealthDoc", null, null, "https://play.google.com/store/apps/details?id=com.manorama.healthrecordorganizer")
+    }
     </script>  
 </body> 	
 </html>

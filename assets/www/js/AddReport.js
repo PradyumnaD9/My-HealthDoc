@@ -1,12 +1,13 @@
 	function SaveReport(){
 		
 		var reportname =  $("#visit_report_name").val();
-		var ins = document.getElementById('file').files.length;		
+		var ins = document.getElementById('file').files.length;	
+	var ext = $('#file').val().split('.').pop().toLowerCase();		
 		if(reportname == "") {
-                alert("Please Enter ReportName")
+                alert("Please Enter Report Name")
 				setTimeout(function(){
 					$("#visit_report_name").focus();
-					
+					return false;
 				},500)
                 
                 return false;
@@ -14,6 +15,11 @@
 					
 					alert("Please Select at least one File");
 					}
+					
+			else if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+				alert('invalid extension!');
+				return false;
+			}
 		else {
 			  var form1 = $('#report-form')[0];		
 			  var data = new FormData(form1);

@@ -19,55 +19,12 @@
 	<script src="js/CallNumber.js"></script>	  
 
     <style>
-	
 
-span.screen-title {
-    font-size: 1.5rem;
-    margin-left: 4rem!important;
+		td, th {
+    padding: 2px 9px;
+    border-right: 1px solid #eee !important;
 }
-
-	.inputfile-4 + label figure, .capture_cam{
-		width: 90px;
-		height: 90px;
-		border-radius: 50%;
-		background-color: #ef3864;
-		display: block;
-		padding: 28px;
-		margin: 0 auto 10px;
-		color:#fff;
-		box-shadow: 0 10px 20px #999, inset 0px 1px 5px #676767, 0 -10px 20px #f3f3f3;
-	}
-	.inputfile {
-		width: 0.1px;
-		height: 0.1px;
-		opacity: 0;
-		overflow: hidden;
-		position: absolute;
-		z-index: -1;
-	}
-	.up_file, .up_cam{
-	  width: 25%;
-      float: left;
-	      margin-left: 15%;
-	}
-	.up_file{
-	  text-align: center;
-	}
-	thead, tbody { display: block; }
-	tbody td, thead th {
-		width: 30%;	
-	}
-	tbody {
-			
-		overflow-y: auto;    /* Trigger vertical scroll    */
-		overflow-x: hidden;  /* Hide the horizontal scroll */		
-		}
-		.table-striped{ border:1px solid #eee;}
-		.table-striped tr{ border-bottom:1px solid #eee;}
-		.callno span{float:right;     padding: 0 10px;
-    color: #304cb9;
-    width: 100%;
-    text-align: center; }
+	
     </style>
   </head>
   <body onload="onLoad();">
@@ -147,10 +104,24 @@ span.screen-title {
 		<li>
             <div class="divider"></div>
         </li>
+		<li>
+            <a class="waves-effect" onClick="share();">
+                <i class="material-icons">share</i>Share App</a>
+        </li>
 		
+		<li>
+            <div class="divider"></div>
+        </li>
 		<li>
             <a class="waves-effect" href="Setting.html">
                 <i class="material-icons">settings</i>Setting</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+		<li >
+            <a class="waves-effect" href="Feedback.html">
+                <i class="material-icons">feedback</i>Feedback</a>
         </li>
         <li>
             <div class="divider"></div>
@@ -188,8 +159,8 @@ span.screen-title {
 			<table  name="myrole" class='table-striped' > 
 			<thead>
 			<tr>
-				<th style="">Doctor Name</th>
-				<th style="padding-left: 69px;">Mobile No</th>    
+				<th >Doctor Name</th>
+				<th >Mobile No</th>    
 			</tr>
 			</thead>
 			<tbody id="myrole" class="well-lg"></tbody>
@@ -309,6 +280,12 @@ function dial(number){
      function onBackKeyDown()
      {
        window.location.href="Menu.html";
+    }
+	
+	function share()
+	{ 
+	
+	   window.plugins.socialsharing.share("Hey check out our new app My HealthDoc", null, null, "https://play.google.com/store/apps/details?id=com.manorama.healthrecordorganizer")
     }
 </script>
 </html>

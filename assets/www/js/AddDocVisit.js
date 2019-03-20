@@ -18,7 +18,7 @@ function viewdoc(){
                                      var parseJson = JSON.parse(data);
 									 var option="";
                                    if(parseJson.result == false){
-									   option += '<option value="">Please Add Doctor First</option>';
+									   option += '<option value="">Please Add Consulting Doctor</option>';
 									   
 								   }  else{
 									 //alert(parseJson[1].role_name)
@@ -45,7 +45,7 @@ option += '<option value="'+ parseJson.message[i].consulting_doctor_id + '"data-
 		var medication = $("#visit_medication").val()
 		var ins = document.getElementById('file').files.length;										
 		var followdate = $("#visit_followup_date").val();
-		
+		var ext = $('#file').val().split('.').pop().toLowerCase();
 		
 		
 		//alert(docname);
@@ -82,6 +82,10 @@ option += '<option value="'+ parseJson.message[i].consulting_doctor_id + '"data-
 					
 					alert("Please Select at least one Image");
 					}
+			else if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+				alert('invalid extension!');
+				return false;
+			}
 			else if(followdate == ""){
 				 alert("Please Select FollowUp Date")
 				 setTimeout(function(){

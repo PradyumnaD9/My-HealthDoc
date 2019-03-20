@@ -50,19 +50,11 @@
             <div class="divider"></div>
         </li>   
 	
-		<li>
+		<li >
             <a class="waves-effect" href="DemographicDetails.html">
                 <i class="material-icons">group</i>Demographic Details</a>
         </li>
-		
-		 <li>
-            <div class="divider"></div>
-        </li> 
-         <li>
-            <a class="waves-effect" href="AddDocVisit.html">
-                <i class="material-icons">add_box</i>Add Visits</a>
-        </li>
-        <li>
+		<li>
             <div class="divider"></div>
         </li>        
 		
@@ -71,32 +63,19 @@
             <a class="waves-effect"  href="DoctorList.html">
                 <i class="material-icons">person</i>Consulting Doctors</a>
         </li>
-		<li>
+		 <li>
             <div class="divider"></div>
+        </li> 
+         <li>
+            <a class="waves-effect" href="AddDocVisit.html">
+                <i class="material-icons">add_box</i>Add Doctor Visit</a>
         </li>
-		
-		
-		<li>
-            <a class="waves-effect" href="InsuranceList.html">
-                <i class="material-icons">description</i>Health Insurance</a>
-        </li>
-		
-		
-		<li>
-            <div class="divider"></div>
-        </li>
-		<li>
-            <a class="waves-effect" href="VisitList.html">
-                <i class="material-icons">assignment_ind</i>Previous Visit Details</a>
-        </li>
-		
         <li>
             <div class="divider"></div>
         </li>
-		
-		<li>
-            <a class="waves-effect" href="AddEmergencyNoList.html">
-                <i class="material-icons">call</i>Emergency Call</a>
+		<li >
+            <a class="waves-effect" href="VisitList.html">
+                <i class="material-icons">file_upload</i>Upload Reports</a>
         </li>
 		<li>
             <div class="divider"></div>
@@ -104,24 +83,45 @@
 		
 		<li>
             <a class="waves-effect" href="Reports.html">
-                <i class="material-icons">assignment_turned_in</i>Report</a>
+                <i class="material-icons">assignment_turned_in</i>View Reports</a>
         </li>
 		<li>
             <div class="divider"></div>
         </li>
 		<li>
-            <a class="waves-effect" href="AddReport.html">
-                <i class="material-icons">assignment_turned_in</i>Lab Report</a>
+            <a class="waves-effect" href="InsuranceList.html">
+                <i class="material-icons">description</i>Health Insurance</a>
         </li>
-		<li>
+        <li>
             <div class="divider"></div>
         </li>
 		
+		<li>
+            <a class="waves-effect" href="AddEmergencyNoList.html">
+                <i class="material-icons">call</i>Emergency Call</a>
+        </li>	
+		<li>
+            <div class="divider"></div>
+        </li>
+		<li>
+            <a class="waves-effect" onClick="share();">
+                <i class="material-icons">share</i>Share App</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>
 		<li>
             <a class="waves-effect" href="Setting.html">
                 <i class="material-icons">settings</i>Setting</a>
         </li>
         <li>
+            <div class="divider"></div>
+        </li>
+		<li >
+            <a class="waves-effect" href="Feedback.html">
+                <i class="material-icons">feedback</i>Feedback</a>
+        </li>
+		 <li>
             <div class="divider"></div>
         </li>
         <li>
@@ -199,7 +199,7 @@
 				 console.log(Resourcetable);
 				 for(var i =0;i < Resourcetable.length;i++)
 				 {
-				   console.log(Resourcetable[i].insurance_id);
+				   //console.log(Resourcetable[i].insurance_id);
 				   bindList(Resourcetable[i].notification_message,Resourcetable[i].user_id);
 				 }
 				 }
@@ -222,7 +222,7 @@
 
         _strim += '<div class="row card" >';
        
-        _strim += '<div class="col s9" style="margin-top: 5px;margin-bottom: 5px;">';
+        _strim += '<div class="col s12" style="margin-top: 5px;margin-bottom: 5px;">';
         _strim += '<div class="apptText"> ';
         _strim += '<span class="">' + notification_message + '</span></br>';
        
@@ -252,8 +252,14 @@
     }
 	
 	
-	 var loginname = localStorage.getItem('user_name');
+	var loginname = localStorage.getItem('user_name');
     $('#loginname').text(loginname);
+	
+	function share()
+	{ 
+	
+	   window.plugins.socialsharing.share("Hey check out our new app My HealthDoc", null, null, "https://play.google.com/store/apps/details?id=com.manorama.healthrecordorganizer")
+    }
     </script>
 	
 	

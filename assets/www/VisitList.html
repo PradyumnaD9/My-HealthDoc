@@ -21,33 +21,7 @@
     .table-striped>tbody>tr:nth-of-type(odd) {
     background-color: #E0E0E0;
 }
-	.inputfile-4 + label figure, .capture_cam{
-		width: 90px;
-		height: 90px;
-		border-radius: 50%;
-		background-color: #ef3864;
-		display: block;
-		padding: 28px;
-		margin: 0 auto 10px;
-		color:#fff;
-		box-shadow: 0 10px 20px #999, inset 0px 1px 5px #676767, 0 -10px 20px #f3f3f3;
-	}
-	.inputfile {
-		width: 0.1px;
-		height: 0.1px;
-		opacity: 0;
-		overflow: hidden;
-		position: absolute;
-		z-index: -1;
-	}
-	.up_file, .up_cam{
-	  width: 25%;
-      float: left;
-	      margin-left: 15%;
-	}
-	.up_file{
-	  text-align: center;
-	}
+	
 	.nav-extended{
 	      margin-bottom: 20px;
 	} 
@@ -63,9 +37,6 @@
 	#myrole td,th{
 	 text-align:center;
 	}	
-	#myrole i{
-	 float:left;
-	}
     </style>
   </head>
   <body onload="onLoad();">
@@ -146,12 +117,25 @@
 		<li>
             <div class="divider"></div>
         </li>
-		
+		<li>
+            <a class="waves-effect" onClick="share();">
+                <i class="material-icons">share</i>Share App</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>
 		<li>
             <a class="waves-effect" href="Setting.html">
                 <i class="material-icons">settings</i>Setting</a>
         </li>
         <li>
+            <div class="divider"></div>
+        </li>
+		<li >
+            <a class="waves-effect" href="Feedback.html">
+                <i class="material-icons">feedback</i>Feedback</a>
+        </li>
+		 <li>
             <div class="divider"></div>
         </li>
         <li>
@@ -173,7 +157,7 @@
 			<a href="Notification.html" class="noti"><i class="material-icons">notifications</i></a>
         </div>
     </nav>
-	<div class="row" style="overflow: auto; height: 90vh; margin-bottom:0px;">
+	<div class="row" style="overflow: auto; margin-bottom:0px;">
 	<form id="uploadimage" action="" method="post" enctype="multipart/form-data">
  <div class="col s12 m12">	
 		
@@ -181,15 +165,24 @@
 			<table  name="myrole" class='table-striped' > 
 			<thead>
 			<tr>
-				<th width="50%">Visit Date</th>
-				<th width="50%">File Upload</th>
+				<th width="30%">Visit Date</th>
+				<th width="40%">File Upload</th>
+				<th width="30%">View Prescription</th>
 			    				
 			</tr>
 			</thead>
 			<tbody id="myrole" class="well-lg"></tbody>
 			</table>
 			
-		</div></div>
+		</div> <div id="modal1" class="modal">
+                    <div class="modal-content">
+					<a id="close" class="waves-effect waves-light modal-close" style="float:right;color:#000;"><i class="material-icons menu">close</i></a>
+                        <div class="input-field col s12 m12">
+                            <img id="display_img" style="width:100%"/>
+                        </div>
+                        <div id="panelID"></div>
+                    </div>
+                </div></div>
 		 
 	</form></div>
   <img id="loading_img" style="width: 20%;text-align: center;position: absolute;top: 24%;left: 40%;z-index: 1;display:none;" src="images/uploading.gif" >
@@ -243,7 +236,7 @@ try{
 	
 	for(var i =0;i < parseJson.message.length;i++)
 			{ 
-				$("#myrole").append('<tr><td width="50%" class="docname" doc-id="'+parseJson.message[i].visit_id+'" >'+ parseJson.message[i].visit_date+'</td><td width="50%" class="callno" data-mob="'+parseJson.message[i].visit_id+'"><span><i class="Small material-icons">file_upload</i>Upload File</span></td></tr>');					
+				$("#myrole").append('<tr><td width="30%" class="docname" doc-id="'+parseJson.message[i].visit_id+'" >'+ parseJson.message[i].visit_date+'</td><td width="40%" class="callno" data-mob="'+parseJson.message[i].visit_id+'"><span><i class="Small material-icons" style="float:left;">file_upload</i>Upload File</span></td><td width="30%" class="viewpres" data-img="'+parseJson.message[i].visit_img_path+'"><i class="Small material-icons">remove_red_eye</i></td></tr>');					
 			}
 			
 			$(".callno").click(function(){
@@ -251,6 +244,15 @@ try{
 			localStorage.setItem('visit_id',mob);
 			window.location.href="AddReport.html";
 			});
+			
+			$(".viewpres").click(function(){
+			var img = $(this).attr('data-img');
+			
+			$('#display_img').attr('src','');
+			$('#display_img').attr('src','https://www.manoramahealthcare.com/health_record_organizer/'+img);		
+			$("#modal1").modal('open');
+			
+		});	
 			}
 			},
  			 
@@ -274,7 +276,7 @@ try{
                 		return; //skip this error
                 	}
                 }
- 	
+				$('.modal').modal();
 });
 
 function addvisit(){
@@ -290,6 +292,11 @@ window.location.href="AddDocVisit.html";
      function onBackKeyDown()
      {
        window.location.href="Menu.html";
+    }
+	function share()
+	{ 
+	
+	   window.plugins.socialsharing.share("Hey check out our new app My HealthDoc", null, null, "https://play.google.com/store/apps/details?id=com.manorama.healthrecordorganizer")
     }
 </script>
 </html>

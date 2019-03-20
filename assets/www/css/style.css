@@ -384,3 +384,6 @@ button:focus {
 	.noti{float:right; padding: 0 16px 0 0;}
 	.menu{color:#fff !important;}
 	
+	.red-asterisk{
+		 color:red;
+		}

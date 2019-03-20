@@ -62,7 +62,7 @@ textarea.materialize-textarea {
      
 </head>
 
-<body>
+<body onload="onLoad();">
  <div class="banner">
 <div class="agileinfo-dot">
 	<h1><img src="images/logo.png"></h1>
@@ -122,6 +122,23 @@ textarea.materialize-textarea {
 
             return true;
         }
+		 function onLoad()
+     {
+        document.addEventListener("backbutton", onBackKeyDown, false);
+     }
+		 function onBackKeyDown()
+    {
+ 
+		var r = confirm("Do You Want To Exit App?");
+		if (r == true) {
+			//x = "You pressed OK!";
+			 navigator.app.exitApp();
+			} 
+			else{
+			
+			}  
+
+    }
 
 	 </script>
 

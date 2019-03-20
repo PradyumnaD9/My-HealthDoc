@@ -95,12 +95,26 @@
         </li>	
 		<li>
             <div class="divider"></div>
-        </li>	
+        </li>
+		<li>
+            <a class="waves-effect" onClick="share();">
+                <i class="material-icons">share</i>Share App</a>
+        </li>
+		<li>
+            <div class="divider"></div>
+        </li>		
 		<li class="activated">
             <a class="waves-effect" href="Setting.html">
                 <i class="material-icons">settings</i>Setting</a>
         </li>
         <li>
+            <div class="divider"></div>
+        </li>
+		<li >
+            <a class="waves-effect" href="Feedback.html">
+                <i class="material-icons">feedback</i>Feedback</a>
+        </li>
+		 <li>
             <div class="divider"></div>
         </li>
         <li>
@@ -118,7 +132,7 @@
             <a href="#!" class="left brand-logo waves-effect" data-activates="slide-out">
                 <i class="material-icons menu">menu</i>
             </a>
-            <span style=" font-size: 1.5rem;margin-left: 4em!important;">Setting</span>
+            <span style=" font-size: 1.5rem;margin-left: 3em!important;">Setting</span>
 	<a href="Notification.html" class="noti"><i class="material-icons">notifications</i></a>
         </div>
     </nav>
@@ -179,6 +193,11 @@
      function onBackKeyDown()
      {
        window.location.href="Menu.html";
+    }
+	function share()
+	{ 
+	
+	   window.plugins.socialsharing.share("Hey check out our new app My HealthDoc", null, null, "https://play.google.com/store/apps/details?id=com.manorama.healthrecordorganizer")
     }
 	
     </script>

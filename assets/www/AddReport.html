@@ -20,36 +20,7 @@
 	
     .table-striped>tbody>tr:nth-of-type(odd) {
     background-color: #E0E0E0;
-}
-	.inputfile-4 + label figure, .capture_cam{
-		width: 90px;
-		height: 90px;
-		border-radius: 50%;
-		background-color: #ef3864;
-		display: block;
-		padding: 28px;
-		margin: 0 auto 10px;
-		color:#fff;
-		box-shadow: 0 10px 20px #999, inset 0px 1px 5px #676767, 0 -10px 20px #f3f3f3;
-	}
-	.inputfile {
-		width: 0.1px;
-		height: 0.1px;
-		opacity: 0;
-		overflow: hidden;
-		position: absolute;
-		z-index: -1;
-	}
-	.up_file, .up_cam{
-	  width: 25%;
-      float: left;
-	      margin-left: 15%;
-	}
-	.up_file{
-	  text-align: center;
-	}
-	 
-	
+}	
 	tbody td, thead th {
 		width: 30%;	
 	}
@@ -64,6 +35,9 @@
 				font-size: 19px;
 				font-weight: 400; 
 				margin-bottom: 10px;
+		}
+		.red-asterisk{
+		 color:red;
 		}
     </style>
   </head>
@@ -144,13 +118,26 @@
         </li>	
 		<li>
             <div class="divider"></div>
+        </li>			
+		<li>
+            <a class="waves-effect" onClick="share();">
+                <i class="material-icons">share</i>Share App</a>
         </li>
-		
+		<li>
+            <div class="divider"></div>
+        </li>
 		<li>
             <a class="waves-effect" href="Setting.html">
                 <i class="material-icons">settings</i>Setting</a>
         </li>
         <li>
+            <div class="divider"></div>
+        </li>
+		<li >
+            <a class="waves-effect" href="Feedback.html">
+                <i class="material-icons">feedback</i>Feedback</a>
+        </li>
+		 <li>
             <div class="divider"></div>
         </li>
         <li>
@@ -175,11 +162,11 @@
 	<div class="row" style="overflow: auto; margin-bottom:0px;">
 	<form id="report-form" name="report-form" action="" method="post" enctype="multipart/form-data">	
 	 <div class="col s12 m12"> <div class="input-field col s12 m4">
-                <label>Report Name </label>
+                <label>Report Name <span class='red-asterisk'>*</span></label>
 				<input type="text" id="visit_report_name" name="visit_report_name"/>				
 			  </div>
 			  <div class="input-field col s12 m4">
-                <label>Upload File </label>
+                <label>Upload File <span class='red-asterisk'>*</span>(jpg,jpeg,png,gif)</label>
 			
 			<div class="input-field col s12 m12" style="margin-bottom: 1rem;">
 				<div class="file-upload">
@@ -317,10 +304,15 @@ $('.chooseFile').bind('change', function () {
 		$("#noFile").text("No file chosen..."); 
 	  }
 	  else {
+	  if(filename.length > 30) filename = filename.substring(0,30)+'...';  
 		$(".file-upload").addClass('active');
 		$("#noFile").text(filename.replace("C:\\fakepath\\", "")); 
 	  }
 	});
-
+function share()
+	{ 
+	
+	   window.plugins.socialsharing.share("Hey check out our new app My HealthDoc", null, null, "https://play.google.com/store/apps/details?id=com.manorama.healthrecordorganizer")
+    }
 </script>
 </html>

@@ -109,7 +109,7 @@ var address = localStorage.getItem('address');
 					return false;
 				   }
 			}
-			else {
+			
 				
 		var data = $("#register-form").serialize();
 	
@@ -126,9 +126,7 @@ var address = localStorage.getItem('address');
 				  ResetForm();	
 			  }
 	 });	
-				
-			}
-			
+	
     }
 	
 	function ValidateEmail(email) {

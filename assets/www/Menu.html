@@ -106,13 +106,26 @@ body{
         </li>	
 		<li>
             <div class="divider"></div>
+        </li>		
+		<li>
+            <a class="waves-effect" onClick="share();">
+                <i class="material-icons">share</i>Share App</a>
         </li>
-		
+		<li>
+            <div class="divider"></div>
+        </li>
 		<li>
             <a class="waves-effect" href="Setting.html">
                 <i class="material-icons">settings</i>Setting</a>
-        </li>
+        </li>      
         <li>
+            <div class="divider"></div>
+        </li>
+		<li >
+            <a class="waves-effect" href="Feedback.html">
+                <i class="material-icons">feedback</i>Feedback</a>
+        </li>
+		 <li>
             <div class="divider"></div>
         </li>
         <li>
@@ -130,7 +143,7 @@ body{
             <a href="#!" class="left brand-logo waves-effect" data-activates="slide-out">
                 <i class="material-icons menu">menu</i>
             </a>
-			<span class="screen-title">Dashboard</span>			
+			<span class="screen-title">My HealthDoc</span>			
 			<a href="Notification.html" class="noti"><i class="material-icons">notifications</i></a>
         </div>
 		
@@ -262,9 +275,6 @@ body{
 		function onError(result) {
 		 console.log("Error:"+result);
 		}
-
-      
-	 
 	 
 	   function onLoad()
      {
@@ -283,7 +293,11 @@ body{
 			}  
 
     }
+	function share()
+	{ 
 	
+	   window.plugins.socialsharing.share("Hey check out our new app My HealthDoc", null, null, "https://play.google.com/store/apps/details?id=com.manorama.healthrecordorganizer")
+    }
     var loginname = localStorage.getItem('user_name');
     $('#loginname').text(loginname);
       
